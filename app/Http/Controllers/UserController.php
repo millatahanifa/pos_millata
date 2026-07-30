@@ -100,8 +100,15 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-
-        return back()->with('success', 'Pengguna berhasil dihapus!');
+        try {
+            $user->delete();
+            return back()->with('success', 'Pengguna berhasil dihapus!');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Menangkap error foreign key agar tidak crash (Error 500)
+            if ($e->getCode() == "23000") {
+                return back()->with('error', 'Pengguna tidak dapat dihapus karena masih memiliki riwayat transaksi penjualan.');
+            }
+            return back()->with('error', 'Terjadi kesalahan pada database.');
+        }
     }
 }

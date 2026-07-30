@@ -16,7 +16,7 @@
     <style>
         :root {
             --bg-body: #fdfbf7;
-            --sidebar-bg: #ffffff;
+            --navbar-bg: #ffffff;
             --primary-dark: #3a1a05;
             --primary-accent: #78350f;
             --brand-warm: #d97706;
@@ -36,105 +36,77 @@
             padding: 0;
         }
 
-        .app-layout {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* --- SIDEBAR STYLING --- */
-        .sidebar {
-            width: 260px;
-            min-width: 260px;
-            background: var(--sidebar-bg);
-            border-right: 1px solid var(--card-border);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 1.5rem 1.25rem;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        .sidebar-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            padding-bottom: 1.25rem;
-            border-bottom: 1px solid #f3e8d8;
-            margin-bottom: 1.5rem;
+        /* --- NAVBAR ATAS STYLING --- */
+        .navbar-custom {
+            background: var(--navbar-bg);
+            border-bottom: 1px solid var(--card-border);
+            padding: 0.6rem 2rem;
+            box-shadow: 0 4px 12px rgba(120, 53, 15, 0.02);
         }
 
         .brand-icon {
-            width: 42px;
-            height: 42px;
+            width: 35px;
+            height: 35px;
             background: linear-gradient(135deg, #5c2406 0%, var(--primary-dark) 100%);
             color: #fef3c7;
-            border-radius: 12px;
+            border-radius: 9px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
-            box-shadow: 0 4px 12px rgba(92, 36, 6, 0.2);
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(92, 36, 6, 0.2);
         }
 
         .brand-text {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 800;
             color: var(--primary-dark);
             margin: 0;
             letter-spacing: -0.02em;
         }
 
-        .sidebar-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            flex-grow: 1;
-        }
-
+        /* Mengatur ukuran tombol menu agar pendek dan rapi secara inline */
         .nav-link-custom {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 0.85rem;
-            padding: 0.75rem 1rem;
+            gap: 0.4rem;
+            padding: 0.4rem 0.85rem;
             color: var(--primary-accent);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
-            border-radius: 12px;
+            font-size: 0.85rem;
+            border-radius: 8px;
             transition: all 0.2s ease;
+            width: auto !important; /* Memastikan tidak memanjang penuh */
         }
 
         .nav-link-custom:hover {
             background-color: #fff7ed;
             color: var(--brand-warm);
-            transform: translateX(3px);
         }
 
         .nav-link-custom.active {
             background: linear-gradient(135deg, #5c2406 0%, var(--primary-dark) 100%);
             color: #ffffff;
-            box-shadow: 0 4px 14px rgba(60, 26, 5, 0.2);
+            box-shadow: 0 4px 12px rgba(60, 26, 5, 0.2);
         }
 
+        /* Tombol Keluar yang ringkas */
         .btn-logout {
-            width: 100%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 0.65rem 1rem;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
             background-color: #fff1f2;
             color: #e11d48;
             border: 1px solid #fecdd3;
-            border-radius: 12px;
-            font-size: 0.875rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
             font-weight: 700;
             transition: all 0.2s ease;
             cursor: pointer;
+            width: auto;
         }
 
         .btn-logout:hover {
@@ -144,104 +116,82 @@
 
         /* --- MAIN CONTENT AREA --- */
         .main-content {
-            margin-left: 260px;
-            flex-grow: 1;
-            padding: 2.25rem 2.5rem;
-            width: calc(100% - 260px);
-        }
-
-        .main-content.full-width {
-            margin-left: 0 !important;
-            width: 100% !important;
-            padding: 0 !important;
-        }
-
-        .top-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1.25rem;
-            border-bottom: 1px solid #f0e4d4;
-        }
-
-        .page-title {
-            font-size: 1.65rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin: 0;
-            letter-spacing: -0.03em;
-        }
-
-        .custom-card {
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 18px;
-            padding: 1.5rem;
-            box-shadow: var(--card-shadow);
+            padding: 2rem 2.5rem;
+            width: 100%;
         }
 
         @media (max-width: 991px) {
-            .sidebar { width: 100%; height: auto; position: relative; }
-            .main-content { margin-left: 0; width: 100%; padding: 1.25rem; }
-            .app-layout { flex-direction: column; }
+            .main-content { padding: 1.25rem; }
+            .nav-link-custom, .btn-logout { width: 100% !important; justify-content: flex-start; }
         }
     </style>
     @stack('styles')
 </head>
 <body>
 
-<div class="app-layout">
-    @unless (request()->routeIs('login'))
-        <aside class="sidebar">
-            <div>
-                <div class="sidebar-brand">
-                    <div class="brand-icon">
-                        <i class="bi bi-shop"></i>
-                    </div>
-                    <h1 class="brand-text">POS Millata</h1>
+@unless (request()->routeIs('login'))
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container-fluid px-0">
+            <a href="{{ route('dashboard') }}" class="navbar-brand d-flex align-items-center gap-2 m-0 text-decoration-none">
+                <div class="brand-icon">
+                    <i class="bi bi-shop"></i>
                 </div>
+                <h1 class="brand-text">POS Millata</h1>
+            </a>
 
-                <nav class="sidebar-menu">
-                    <a href="{{ route('dashboard') }}" class="nav-link-custom {{ Request::is('dashboard') ? 'active' : '' }}">
-                        <i class="bi bi-grid-1x2-fill"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    <a href="{{ route('produk.index') }}" class="nav-link-custom {{ Request::is('produk*') ? 'active' : '' }}">
-                        <i class="bi bi-box-seam-fill"></i>
-                        <span>Produk</span>
-                    </a>
-                    <a href="{{ route('penjualan.index') }}" class="nav-link-custom {{ Request::is('penjualan*') ? 'active' : '' }}">
-                        <i class="bi bi-receipt"></i>
-                        <span>Penjualan</span>
-                    </a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    {{-- Menu Users hanya tampil jika yang login adalah admin --}}
-                    @if(auth()->check() && auth()->user()->role === 'admin')
-                    <a href="{{ route('admin.users') }}" class="nav-link-custom {{ Request::is('admin/users*') ? 'active' : '' }}">
-                        <i class="bi bi-people-fill"></i>
-                        <span>Users</span>
-                    </a>
+            <div class="collapse navbar-collapse justify-content-between mt-2 mt-lg-0" id="navbarNav">
+                <ul class="navbar-nav align-lg-items-center gap-1 mx-lg-auto">
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}" class="nav-link-custom {{ Request::is('dashboard') ? 'active' : '' }}">
+                            <i class="bi bi-grid-1x2-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('produk.index') }}" class="nav-link-custom {{ Request::is('produk*') ? 'active' : '' }}">
+                            <i class="bi bi-box-seam-fill"></i>
+                            <span>Produk</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('penjualan.index') }}" class="nav-link-custom {{ Request::is('penjualan*') ? 'active' : '' }}">
+                            <i class="bi bi-receipt"></i>
+                            <span>Penjualan</span>
+                        </a>
+                    </li>
+
+                    {{-- Menu Users HANYA MUNCUL untuk Admin --}}
+                    @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.users') }}" class="nav-link-custom {{ Request::is('admin/users*') ? 'active' : '' }}">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Users</span>
+                        </a>
+                    </li>
                     @endif
-                </nav>
-            </div>
+                </ul>
 
-            <div>
-                <form action="{{ route('logout') }}" method="POST" class="m-0">
-                    @csrf
-                    <button type="submit" class="btn btn-logout">
-                        <i class="bi bi-box-arrow-right"></i>
-                        <span>Keluar</span>
-                    </button>
-                </form>
+                <div class="d-flex align-items-center mt-2 mt-lg-0">
+                    <form action="{{ route('logout') }}" method="POST" class="m-0">
+                        @csrf
+                        <button type="submit" class="btn btn-logout">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Keluar</span>
+                        </button>
+                    </form>
+                </div>
             </div>
-        </aside>
-    @endunless
+        </div>
+    </nav>
+@endunless
 
-    <main class="main-content {{ request()->routeIs('login') ? 'full-width' : '' }}">
-        @yield('content')
-    </main>
-</div>
+<main class="main-content">
+    @yield('content')
+</main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 @stack('scripts')

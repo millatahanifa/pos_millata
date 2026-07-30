@@ -119,9 +119,7 @@
                 <span class="fs-4 fw-bold" style="color: #78350f;">Rp {{ number_format($sale->total_pembayaran, 0, ',', '.') }}</span>
             </div>
 
-            <form method="POST"
-                action="{{ route('penjualan.update', $sale->id) }}"
-                onsubmit="return confirm('Yakin ingin checkout?')">
+            <form id="checkout-form-{{ $sale->id }}" method="POST" action="{{ route('penjualan.update', $sale->id) }}">
                 @csrf
                 @method('PUT')
 
@@ -131,20 +129,18 @@
                     <option value="QRIS" {{ $sale->metode_pembayaran == 'QRIS' ? 'selected' : '' }}>QRIS</option>
                 </select>
 
-                <button class="btn text-white w-100 py-2 shadow-sm {{ $sale->status == 'COMPLETED' ? 'disabled' : '' }}" 
+                <button type="button" onclick="confirmCheckout()" class="btn text-white w-100 py-2 shadow-sm {{ $sale->status == 'COMPLETED' ? 'disabled' : '' }}" 
                     style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 10px; font-weight: 700;">
                     <i class="bi bi-check-circle-fill me-1"></i> Selesaikan Transaksi (Checkout)
                 </button>
             </form>
 
             @can('delete',$sale)
-            <form action="{{ route('penjualan.destroy', $sale->id) }}"
-                method="POST"
-                onsubmit="return confirm('Yakin ingin membatalkan transaksi?')" class="mt-2">
+            <form id="cancel-sale-form-{{ $sale->id }}" action="{{ route('penjualan.destroy', $sale->id) }}" method="POST" class="mt-2">
                 @csrf
                 @method('DELETE')
 
-                <button class="btn btn-outline-danger w-100 py-2 {{ $sale->status == 'COMPLETED' ? 'disabled' : '' }}" 
+                <button type="button" onclick="confirmCancelSale()" class="btn btn-outline-danger w-100 py-2 {{ $sale->status == 'COMPLETED' ? 'disabled' : '' }}" 
                     style="border-radius: 10px; font-weight: 600; font-size: 0.85rem;">
                     Batalkan Transaksi
                 </button>
@@ -154,3 +150,68 @@
     </div>
 </div>
 </div>
+
+@push('scripts')
+<script>
+    function confirmCheckout() {
+        // Validasi pilihan metode pembayaran terlebih dahulu
+        const paymentMethod = document.querySelector('select[name="payment_method"]').value;
+        if (!paymentMethod) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian',
+                text: 'Silakan pilih metode pembayaran terlebih dahulu!',
+                confirmButtonColor: '#d97706',
+                customClass: { popup: 'rounded-4' }
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: 'Selesaikan transaksi ini?',
+            showCancelButton: true,
+            confirmButtonColor: '#10b981',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, Checkout',
+            cancelButtonText: 'Batal',
+            width: '320px',
+            padding: '0.85rem 1rem',
+            customClass: {
+                popup: 'rounded-4 shadow-sm',
+                title: 'fs-6 fw-bold mb-2',
+                actions: 'mt-2 mb-0',
+                confirmButton: 'rounded-pill px-3 py-1 fs-7 m-1',
+                cancelButton: 'rounded-pill px-3 py-1 fs-7 m-1'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('checkout-form-{{ $sale->id }}').submit();
+            }
+        });
+    }
+
+    function confirmCancelSale() {
+        Swal.fire({
+            title: 'Batalkan transaksi ini?',
+            showCancelButton: true,
+            confirmButtonColor: '#e11d48',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, Batalkan',
+            cancelButtonText: 'Batal',
+            width: '320px',
+            padding: '0.85rem 1rem',
+            customClass: {
+                popup: 'rounded-4 shadow-sm',
+                title: 'fs-6 fw-bold mb-2',
+                actions: 'mt-2 mb-0',
+                confirmButton: 'rounded-pill px-3 py-1 fs-7 m-1',
+                cancelButton: 'rounded-pill px-3 py-1 fs-7 m-1'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('cancel-sale-form-{{ $sale->id }}').submit();
+            }
+        });
+    }
+</script>
+@endpush

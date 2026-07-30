@@ -3,13 +3,16 @@
 @section('title', 'Produk - POS Millata')
 
 @section('content')
-<div class="top-header">
+<div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
     <div>
-        <h2 class="page-title">Halaman Produk</h2>
+        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark); font-size: 1.65rem;">Halaman Produk</h1>
+        <div class="date-subtitle text-muted fs-6">
+            <i class="bi bi-box-seam me-1"></i> Manajemen data stok dan produk
+        </div>
     </div>
     <div>
         @can('create', App\Models\Produk::class)
-        <a href="{{ route('produk.create') }}" class="btn d-flex align-items-center gap-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.6rem 1.2rem; box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2);">
+        <a href="{{ route('produk.create') }}" class="btn d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2); width: auto;">
             <i class="bi bi-plus-circle-fill"></i> Create Produk
         </a>
         @endcan
@@ -116,7 +119,6 @@
 
 @push('scripts')
 <script>
-    // Notifikasi Sukses Menggunakan SweetAlert2
     @if(session('success'))
         Swal.fire({
             icon: 'success',
@@ -124,13 +126,10 @@
             text: "{{ session('success') }}",
             showConfirmButton: false,
             timer: 2000,
-            customClass: {
-                popup: 'rounded-4'
-            }
+            customClass: { popup: 'rounded-4' }
         });
     @endif
 
-    // Konfirmasi Hapus Data Disamakan Seperti Halaman Users
     function confirmDelete(id, name) {
         Swal.fire({
             title: 'Hapus produk ' + name + '?',

@@ -3,12 +3,15 @@
 @section('title', 'Tambah Produk - POS Millata')
 
 @section('content')
-<div class="top-header">
+<div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
     <div>
-        <h2 class="page-title">Tambah Produk</h2>
+        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Tambah Produk</h1>
+        <div class="date-subtitle text-muted fs-6">
+            <i class="bi bi-box-seam me-1"></i> Tambahkan data produk baru ke inventaris
+        </div>
     </div>
     <div>
-        <a href="{{ route('produk.index') }}" class="btn d-flex align-items-center gap-2" style="background: #faf5ee; color: #78350f; border: 1px solid #f1e5d7; font-weight: 700; border-radius: 10px; padding: 0.6rem 1.2rem; transition: all 0.2s;">
+        <a href="{{ route('produk.index') }}" class="btn d-flex align-items-center gap-2" style="background: #faf5ee; color: #78350f; border: 1px solid #f1e5d7; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; transition: all 0.2s;">
             <i class="bi bi-arrow-left"></i> Kembali
         </a>
     </div>

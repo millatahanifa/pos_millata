@@ -3,12 +3,15 @@
 @section('title', 'Users - POS Millata')
 
 @section('content')
-<div class="top-header">
+<div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
     <div>
-        <h2 class="page-title">Halaman Users</h2>
+        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark); font-size: 1.65rem;">Halaman Users</h1>
+        <div class="date-subtitle text-muted fs-6">
+            <i class="bi bi-people me-1"></i> Manajemen akun pengguna sistem
+        </div>
     </div>
     <div>
-        <a href="{{ route('admin.users.create') }}" class="btn d-flex align-items-center gap-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.6rem 1.2rem; box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2);">
+        <a href="{{ route('admin.users.create') }}" class="btn d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2); width: auto;">
             <i class="bi bi-plus-circle-fill"></i> Create User
         </a>
     </div>
@@ -87,6 +90,30 @@
 
 @push('scripts')
 <script>
+    // Munculkan alert jika sukses
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 2000,
+            customClass: { popup: 'rounded-4' }
+        });
+    @endif
+
+    // Munculkan alert jika error (misal karena masih terikat relasi transaksi)
+    @if(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal Dihapus!',
+            text: "{{ session('error') }}",
+            confirmButtonColor: '#e11d48',
+            confirmButtonText: 'OK',
+            customClass: { popup: 'rounded-4' }
+        });
+    @endif
+
     function confirmDelete(id, name) {
         Swal.fire({
             title: 'Hapus user ' + name + '?',

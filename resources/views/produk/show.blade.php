@@ -3,18 +3,20 @@
 @section('title', 'Detail Produk - POS Millata')
 
 @section('content')
-<div class="top-header">
+<div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
     <div>
-        <h2 class="page-title">Detail Produk</h2>
+        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Detail Produk</h1>
+        <div class="date-subtitle text-muted fs-6">
+            <i class="bi bi-info-circle me-1"></i> Informasi lengkap detail produk dan stok
+        </div>
     </div>
     <div>
-        <a href="{{ route('produk.index') }}" class="btn d-flex align-items-center gap-2" style="background: #faf5ee; color: #78350f; border: 1px solid #f1e5d7; font-weight: 700; border-radius: 10px; padding: 0.6rem 1.2rem; transition: all 0.2s;">
+        <a href="{{ route('produk.index') }}" class="btn d-flex align-items-center gap-2" style="background: #faf5ee; color: #78350f; border: 1px solid #f1e5d7; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; transition: all 0.2s;">
             <i class="bi bi-arrow-left"></i> Kembali
         </a>
     </div>
 </div>
 
-{{-- Menggunakan d-flex align-items-center justify-content-center dengan tinggi yang disesuaikan agar pas di tengah layar --}}
 <div class="d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 200px);">
     <div style="width: 100%; max-width: 680px;">
         <div class="custom-card p-4">

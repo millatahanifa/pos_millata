@@ -3,32 +3,32 @@
 @section('title', 'Edit User - POS Millata')
 
 @section('content')
-<div class="row justify-content-center my-4">
-    <div class="col-12 col-md-10 col-lg-7">
-        
-        <div class="d-flex align-items-start justify-content-between mb-4">
-            <div>
-                <h2 class="page-title fw-bold mb-1" style="color: #3d1c02;">Edit User</h2>
-                <div class="date-subtitle text-muted fs-6">
-                    <i class="bi bi-pencil-square me-1"></i> Perbarui informasi pengguna sistem
-                </div>
+<div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+    <div>
+        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Edit User</h1>
+        <div class="date-subtitle text-muted fs-6">
+            <i class="bi bi-pencil-square me-1"></i> Perbarui informasi pengguna sistem
+        </div>
+    </div>
+    <div>
+        <a href="{{ route('admin.users') }}" class="btn d-flex align-items-center gap-2" style="background: #faf5ee; color: #78350f; border: 1px solid #f1e5d7; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; transition: all 0.2s;">
+            <i class="bi bi-arrow-left"></i> Kembali
+        </a>
+    </div>
+</div>
+
+<div class="container-fluid px-0 d-flex flex-column justify-content-center" style="min-height: calc(100vh - 180px);">
+    <div class="row justify-content-center w-100 m-0">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="custom-card p-4">
+                <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    @include('users._form')
+                </form>
             </div>
-            
-            <a href="{{ route('admin.users') }}" class="btn btn-outline-secondary rounded-pill px-3 py-1 fs-6 d-flex align-items-center gap-1 bg-white shadow-sm">
-                <i class="bi bi-arrow-left"></i> Kembali
-            </a>
         </div>
-
-        <div class="card border-0 shadow-sm rounded-4 p-4" style="background-color: #ffffff;">
-            <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-
-                @include('users._form')
-
-            </form>
-        </div>
-
     </div>
 </div>
 @endsection
