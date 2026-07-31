@@ -31,10 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:admin,kasir')->group(function () {
         Route::resource('/produk', ProdukController::class);
         
-        // Rute POS berdasarkan ID transaksi yang sedang aktif/dibuat
-        Route::get('/penjualan/pos/{penjualan}', [PenjualanController::class, 'pos'])->name('penjualan.pos.show');
+        // POS khusus untuk transaksi aktif
+        Route::get('/penjualan/pos/{id}', [PenjualanController::class, 'pos'])->name('penjualan.pos');
         
         Route::resource('/penjualan', PenjualanController::class);
-        Route::resource('/itempenjualan', ItemPenjualanController::class);
+        Route::resource('/itempenjualan', ItemPenjualanController::class)->except(['index', 'create', 'show', 'edit']);
     });
 });

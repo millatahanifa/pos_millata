@@ -5,13 +5,6 @@
     </div>
 @endif
 
-@if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show rounded-4 mb-4" role="alert">
-        <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
 <div class="row g-4">
 {{-- ==================== KOLOM KIRI: PRODUK ==================== --}}
 <div class="col-md-6">
@@ -41,11 +34,13 @@
 
                 <div class="col-6">
                     <div class="fw-semibold text-dark text-truncate" style="font-size: 0.9rem;">{{ $product->nama }}</div>
-                    <small class="text-muted" style="font-size: 0.75rem;">Rp {{ number_format($product->harga_jual, 0, ',', '.') }}</small>
+                    <small class="text-muted" style="font-size: 0.75rem;">
+                        Rp {{ number_format($product->harga_jual, 0, ',', '.') }} | Stok: {{ $product->stok }}
+                    </small>
                 </div>
 
                 <div class="col-3">
-                    <input type="number" name="quantity" value="1" min="1"
+                    <input type="number" name="quantity" value="1" min="1" max="{{ $product->stok }}"
                         class="form-control form-control-sm text-center {{ $sale->status === 'COMPLETED' ? 'readonly' : '' }}"
                         style="border-radius: 8px; border-color: #f1e5d7;">
                 </div>
@@ -81,13 +76,14 @@
                 <tbody>
                     @forelse($sale->itemPenjualan as $item)
                     <tr>
-                        <td class="fw-semibold">{{ $item->produk->nama }}</td>
-                        <td>Rp {{ number_format($item->produk->harga_jual, 0, ',', '.') }}</td>
+                        <td class="fw-semibold">{{ $item->produk->nama ?? '-' }}</td>
+                        <td>Rp {{ number_format($item->harga_satuan, 0, ',', '.') }}</td>
                         <td>
                             <form method="POST" action="{{ route('itempenjualan.update', $item->id) }}">
                                 @csrf @method('PUT')
                                 <input type="number" name="quantity"
                                     value="{{ $item->kuantitas }}"
+                                    min="1"
                                     class="form-control form-control-sm text-center"
                                     style="border-radius: 6px;"
                                     onchange="this.form.submit()">
@@ -95,12 +91,10 @@
                         </td>
                         <td class="fw-bold text-dark">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</td>
                         <td class="text-center">
-                            @can('delete', $item)
                             <form method="POST" action="{{ route('itempenjualan.destroy', $item->id) }}" class="d-inline">
                                 @csrf @method('DELETE')
-                                <button class="btn btn-danger btn-sm py-0 px-2" style="border-radius: 6px; font-size: 0.75rem;">Hapus</button>
+                                <button type="submit" class="btn btn-danger btn-sm py-0 px-2" style="border-radius: 6px; font-size: 0.75rem;">Hapus</button>
                             </form>
-                            @endcan
                         </td>
                     </tr>
                     @empty
@@ -129,89 +123,22 @@
                     <option value="QRIS" {{ $sale->metode_pembayaran == 'QRIS' ? 'selected' : '' }}>QRIS</option>
                 </select>
 
-                <button type="button" onclick="confirmCheckout()" class="btn text-white w-100 py-2 shadow-sm {{ $sale->status == 'COMPLETED' ? 'disabled' : '' }}" 
+                <button type="submit" class="btn text-white w-100 py-2 shadow-sm {{ $sale->status == 'COMPLETED' ? 'disabled' : '' }}" 
                     style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 10px; font-weight: 700;">
                     <i class="bi bi-check-circle-fill me-1"></i> Selesaikan Transaksi (Checkout)
                 </button>
             </form>
 
-            @can('delete',$sale)
             <form id="cancel-sale-form-{{ $sale->id }}" action="{{ route('penjualan.destroy', $sale->id) }}" method="POST" class="mt-2">
                 @csrf
                 @method('DELETE')
 
-                <button type="button" onclick="confirmCancelSale()" class="btn btn-outline-danger w-100 py-2 {{ $sale->status == 'COMPLETED' ? 'disabled' : '' }}" 
+                <button type="button" onclick="confirmCancelSale({{ $sale->id }})" class="btn btn-outline-danger w-100 py-2 {{ $sale->status == 'COMPLETED' ? 'disabled' : '' }}" 
                     style="border-radius: 10px; font-weight: 600; font-size: 0.85rem;">
                     Batalkan Transaksi
                 </button>
             </form>
-            @endcan
         </div>
     </div>
 </div>
 </div>
-
-@push('scripts')
-<script>
-    function confirmCheckout() {
-        // Validasi pilihan metode pembayaran terlebih dahulu
-        const paymentMethod = document.querySelector('select[name="payment_method"]').value;
-        if (!paymentMethod) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Perhatian',
-                text: 'Silakan pilih metode pembayaran terlebih dahulu!',
-                confirmButtonColor: '#d97706',
-                customClass: { popup: 'rounded-4' }
-            });
-            return;
-        }
-
-        Swal.fire({
-            title: 'Selesaikan transaksi ini?',
-            showCancelButton: true,
-            confirmButtonColor: '#10b981',
-            cancelButtonColor: '#6c757d',
-            confirmButtonText: 'Ya, Checkout',
-            cancelButtonText: 'Batal',
-            width: '320px',
-            padding: '0.85rem 1rem',
-            customClass: {
-                popup: 'rounded-4 shadow-sm',
-                title: 'fs-6 fw-bold mb-2',
-                actions: 'mt-2 mb-0',
-                confirmButton: 'rounded-pill px-3 py-1 fs-7 m-1',
-                cancelButton: 'rounded-pill px-3 py-1 fs-7 m-1'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('checkout-form-{{ $sale->id }}').submit();
-            }
-        });
-    }
-
-    function confirmCancelSale() {
-        Swal.fire({
-            title: 'Batalkan transaksi ini?',
-            showCancelButton: true,
-            confirmButtonColor: '#e11d48',
-            cancelButtonColor: '#6c757d',
-            confirmButtonText: 'Ya, Batalkan',
-            cancelButtonText: 'Batal',
-            width: '320px',
-            padding: '0.85rem 1rem',
-            customClass: {
-                popup: 'rounded-4 shadow-sm',
-                title: 'fs-6 fw-bold mb-2',
-                actions: 'mt-2 mb-0',
-                confirmButton: 'rounded-pill px-3 py-1 fs-7 m-1',
-                cancelButton: 'rounded-pill px-3 py-1 fs-7 m-1'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('cancel-sale-form-{{ $sale->id }}').submit();
-            }
-        });
-    }
-</script>
-@endpush

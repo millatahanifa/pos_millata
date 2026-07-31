@@ -17,3 +17,31 @@
 
 @include('penjualan._form')
 @endsection
+
+@push('scripts')
+<script>
+    function confirmCancelSale(id) {
+        Swal.fire({
+            title: 'Yakin ingin membatalkan transaksi ini?',
+            showCancelButton: true,
+            confirmButtonColor: '#e11d48',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, Batalkan',
+            cancelButtonText: 'Batal',
+            width: '340px',
+            padding: '0.85rem 1rem',
+            customClass: {
+                popup: 'rounded-4 shadow-sm',
+                title: 'fs-6 fw-bold mb-2',
+                actions: 'mt-2 mb-0',
+                confirmButton: 'rounded-pill px-3 py-1 fs-7 m-1',
+                cancelButton: 'rounded-pill px-3 py-1 fs-7 m-1'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('cancel-sale-form-' + id).submit();
+            }
+        });
+    }
+</script>
+@endpush

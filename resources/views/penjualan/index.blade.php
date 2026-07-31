@@ -25,13 +25,6 @@
         </div>
     @endif
 
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show rounded-4 mb-4" role="alert">
-            <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
     <form action="{{ route('penjualan.index') }}" method="GET" class="mb-4">
         <div class="input-group">
             <input
