@@ -40,7 +40,7 @@
         .navbar-custom {
             background: var(--navbar-bg);
             border-bottom: 1px solid var(--card-border);
-            padding: 0.6rem 2rem;
+            padding: 0.6rem 1.5rem;
             box-shadow: 0 4px 12px rgba(120, 53, 15, 0.02);
         }
 
@@ -69,14 +69,14 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            padding: 0.4rem 0.85rem;
+            padding: 0.5rem 0.85rem;
             color: var(--primary-accent);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
             border-radius: 8px;
             transition: all 0.2s ease;
-            width: auto !important;
+            width: 100% !important;
         }
 
         .nav-link-custom:hover {
@@ -95,7 +95,7 @@
             align-items: center;
             justify-content: center;
             gap: 0.35rem;
-            padding: 0.4rem 0.85rem;
+            padding: 0.5rem 0.85rem;
             background-color: #fff1f2;
             color: #e11d48;
             border: 1px solid #fecdd3;
@@ -104,7 +104,7 @@
             font-weight: 700;
             transition: all 0.2s ease;
             cursor: pointer;
-            width: auto;
+            width: 100%;
         }
 
         .btn-logout:hover {
@@ -113,13 +113,16 @@
         }
 
         .main-content {
-            padding: 2rem 2.5rem;
+            padding: 1.5rem 1rem;
             width: 100%;
         }
 
-        @media (max-width: 991px) {
-            .main-content { padding: 1.25rem; }
-            .nav-link-custom, .btn-logout { width: 100% !important; justify-content: flex-start; }
+        /* Responsive Breakpoints untuk Desktop/Laptop */
+        @media (min-width: 992px) {
+            .navbar-custom { padding: 0.6rem 2rem; }
+            .main-content { padding: 2rem 2.5rem; }
+            .nav-link-custom { width: auto !important; }
+            .btn-logout { width: auto; }
         }
     </style>
     @stack('styles')
@@ -140,32 +143,27 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-between mt-2 mt-lg-0" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-between mt-3 mt-lg-0" id="navbarNav">
                 <ul class="navbar-nav align-lg-items-center gap-1 mx-lg-auto">
                     <li class="nav-item">
                         <a href="{{ route('dashboard') }}" class="nav-link-custom {{ Request::is('dashboard') ? 'active' : '' }}">
-                            <i class="bi bi-grid-1x2-fill"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('produk.index') }}" class="nav-link-custom {{ Request::is('produk*') ? 'active' : '' }}">
-                            <i class="bi bi-box-seam-fill"></i>
                             <span>Produk</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('penjualan.index') }}" class="nav-link-custom {{ Request::is('penjualan*') ? 'active' : '' }}">
-                            <i class="bi bi-receipt"></i>
                             <span>Penjualan</span>
                         </a>
                     </li>
 
-                    {{-- Menu Users HANYA MUNCUL untuk Admin --}}
                     @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
                     <li class="nav-item">
                         <a href="{{ route('admin.users') }}" class="nav-link-custom {{ Request::is('admin/users*') ? 'active' : '' }}">
-                            <i class="bi bi-people-fill"></i>
                             <span>Users</span>
                         </a>
                     </li>
@@ -173,10 +171,9 @@
                 </ul>
 
                 <div class="d-flex align-items-center mt-2 mt-lg-0">
-                    <form action="{{ route('logout') }}" method="POST" class="m-0">
+                    <form action="{{ route('logout') }}" method="POST" class="w-100 m-0">
                         @csrf
                         <button type="submit" class="btn btn-logout">
-                            <i class="bi bi-box-arrow-right"></i>
                             <span>Keluar</span>
                         </button>
                     </form>

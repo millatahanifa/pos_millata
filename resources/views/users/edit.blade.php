@@ -21,6 +21,13 @@
     <div class="row justify-content-center w-100 m-0">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="custom-card p-4">
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert" style="background-color: #d1e7dd; color: #0f5132; border-color: #badbcc; border-radius: 10px;">
+                        <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
                 <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
                     @csrf
                     @method('PUT')

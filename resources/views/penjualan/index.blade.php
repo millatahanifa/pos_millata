@@ -45,7 +45,7 @@
         <table class="table align-middle" style="margin: 0; width: 100%; table-layout: fixed;">
             <thead>
                 <tr style="background-color: #faf5ee;">
-                    <th scope="col" style="width: 6%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">#</th>
+                    <th scope="col" style="width: 6%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">No</th>
                     <th scope="col" style="width: 20%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Tanggal Transaksi</th>
                     <th scope="col" style="width: 16%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Kasir</th>
                     <th scope="col" style="width: 17%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Total Pembayaran</th>
