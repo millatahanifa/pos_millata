@@ -9,9 +9,11 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">Dashboard</a>
                 </li>
+                @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}" href="{{ route('admin.users') }}">Users</a>
                 </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('produk') ? 'active' : '' }}" href="{{ route('produk.index') }}">Produk</a>
                 </li>
@@ -19,7 +21,7 @@
                     <a class="nav-link {{ Request::is('penjualan') ? 'active' : '' }}" href="{{ route('penjualan.index') }}">Penjualan</a>
                 </li>
             </ul>
-            <form class="position-absolute top-50 start-100 translate-middle" action="{{ route('logout') }}" method="POST">
+            <form class="d-flex" action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-danger me-2">Logout</button>
             </form>

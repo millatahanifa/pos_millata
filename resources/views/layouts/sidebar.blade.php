@@ -100,11 +100,13 @@
                 <i class="fa-solid fa-receipt"></i> Penjualan
             </a>
         </li>
+        @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
         <li>
             <a href="{{ route('admin.users') }}" class="nav-link-custom {{ Request::is('admin/users*') ? 'active' : '' }}">
                 <i class="fa-solid fa-users"></i> Users
             </a>
         </li>
+        @endif
     </ul>
 
     <div class="sidebar-footer mt-auto pt-3">

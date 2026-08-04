@@ -65,7 +65,6 @@
             letter-spacing: -0.02em;
         }
 
-        /* Mengatur ukuran tombol menu agar pendek dan rapi secara inline */
         .nav-link-custom {
             display: inline-flex;
             align-items: center;
@@ -77,7 +76,7 @@
             font-size: 0.85rem;
             border-radius: 8px;
             transition: all 0.2s ease;
-            width: auto !important; /* Memastikan tidak memanjang penuh */
+            width: auto !important;
         }
 
         .nav-link-custom:hover {
@@ -91,7 +90,6 @@
             box-shadow: 0 4px 12px rgba(60, 26, 5, 0.2);
         }
 
-        /* Tombol Keluar yang ringkas */
         .btn-logout {
             display: inline-flex;
             align-items: center;
@@ -114,7 +112,6 @@
             color: #be123c;
         }
 
-        /* --- MAIN CONTENT AREA --- */
         .main-content {
             padding: 2rem 2.5rem;
             width: 100%;

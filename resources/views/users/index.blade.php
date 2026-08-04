@@ -5,7 +5,7 @@
 @section('content')
 <div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
     <div>
-        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark); font-size: 1.65rem;">Halaman Users</h1>
+        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Halaman Users</h1>
         <div class="date-subtitle text-muted fs-6">
             <i class="bi bi-people me-1"></i> Manajemen akun pengguna sistem
         </div>
@@ -82,11 +82,50 @@
         </table>
     </div>
 
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mt-4 pt-2 border-top" style="border-color: #faf0e6 !important;">
-        {{ $users->appends(request()->query())->links('pagination::bootstrap-5') }}
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mt-4 pt-3 border-top" style="border-color: #f1e5d7 !important;">
+        <div class="text-muted" style="font-size: 0.875rem;">
+            Showing <span class="fw-bold text-dark">{{ $users->firstItem() ?? 0 }}</span> to <span class="fw-bold text-dark">{{ $users->lastItem() ?? 0 }}</span> of <span class="fw-bold text-dark">{{ $users->total() }}</span> results
+        </div>
+        <div class="custom-pagination">
+            {{ $users->appends(request()->query())->onEachSide(1)->links('pagination::simple-bootstrap-4') }}
+        </div>
     </div>
 </div>
 @endsection
+
+@push('styles')
+<style>
+    /* Styling khusus agar pagination minimalis dan rapi */
+    .custom-pagination nav {
+        display: flex;
+        justify-content: center;
+    }
+    .custom-pagination .pagination {
+        margin-bottom: 0;
+        gap: 4px;
+    }
+    .custom-pagination .page-item .page-link {
+        color: #78350f;
+        border-color: #f1e5d7;
+        background-color: #fff;
+        border-radius: 8px !important;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+    .custom-pagination .page-item.active .page-link {
+        background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2);
+    }
+    .custom-pagination .page-item.disabled .page-link {
+        color: #adb5bd;
+        background-color: #faf5ee;
+        border-color: #f1e5d7;
+    }
+</style>
+@endpush
 
 @push('scripts')
 <script>
