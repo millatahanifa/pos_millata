@@ -39,7 +39,7 @@
             <thead>
                 <tr style="background-color: #faf5ee;">
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">No</th>
-                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Name</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Nama</th>
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Email</th>
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Role</th>
                     <th scope="col" class="text-end" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Aksi</th>
@@ -95,7 +95,6 @@
 
 @push('styles')
 <style>
-    /* Styling khusus agar pagination minimalis dan rapi */
     .custom-pagination nav {
         display: flex;
         justify-content: center;
@@ -129,7 +128,6 @@
 
 @push('scripts')
 <script>
-    // Munculkan alert jika sukses
     @if(session('success'))
         Swal.fire({
             icon: 'success',
@@ -141,7 +139,6 @@
         });
     @endif
 
-    // Munculkan alert jika error (misal karena masih terikat relasi transaksi)
     @if(session('error'))
         Swal.fire({
             icon: 'error',

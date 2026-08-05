@@ -62,11 +62,11 @@
                 </div>
             </div>
 
-            {{-- Tombol Aksi Edit --}}
+            {{-- Tombol Aksi Ubah --}}
             <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top" style="border-color: #faf0e6 !important;">
                 @can('update', $product)
                 <a href="{{ route('produk.edit', $product) }}" class="btn btn-sm text-white fw-bold px-3 py-2" style="border-radius: 8px; background-color: #f59e0b; border: none;">
-                    <i class="bi bi-pencil-square me-1"></i> Edit Produk
+                    <i class="bi bi-pencil-square me-1"></i> Ubah Produk
                 </a>
                 @endcan
             </div>

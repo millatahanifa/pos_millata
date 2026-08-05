@@ -9,7 +9,7 @@
     }
 
     .brand-icon-custom {
-        background-color: #5c3a21; /* Warna cokelat ala POS Millata */
+        background-color: #5c3a21;
         color: #ffffff;
         width: 40px;
         height: 40px;
@@ -44,7 +44,6 @@
         color: #5c3a21;
     }
 
-    /* Menu saat aktif (warna cokelat sesuai gambar) */
     .nav-link-custom.active {
         background-color: #5c3a21 !important;
         color: #ffffff !important;
@@ -87,8 +86,7 @@
     <ul class="nav nav-pills flex-column mb-auto gap-2">
         <li class="nav-item">
             <a href="{{ route('dashboard') }}" class="nav-link-custom {{ Request::is('dashboard') ? 'active' : '' }}">
-                <i class="fa-solid fa-table-cells"></i> Dashboard
-            </a>
+                <i class="fa-solid fa-table-cells"></i> Beranda </a>
         </li>
         <li>
             <a href="{{ route('produk.index') }}" class="nav-link-custom {{ Request::is('produk*') ? 'active' : '' }}">
@@ -103,8 +101,7 @@
         @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
         <li>
             <a href="{{ route('admin.users') }}" class="nav-link-custom {{ Request::is('admin/users*') ? 'active' : '' }}">
-                <i class="fa-solid fa-users"></i> Users
-            </a>
+                <i class="fa-solid fa-users"></i> Pengguna </a>
         </li>
         @endif
     </ul>

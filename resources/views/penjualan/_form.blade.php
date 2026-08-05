@@ -1,7 +1,7 @@
 @if(session('error'))
     <div class="alert alert-danger alert-dismissible fade show rounded-4 mb-4" role="alert">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ session('error') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
     </div>
 @endif
 
@@ -26,6 +26,7 @@
         </div>
 
         <div class="table-responsive pe-2" style="overflow-y: auto; flex-grow: 1;">
+            {{-- PERBAIKAN: Menambahkan spasi pada $products as $product --}}
             @foreach($products as $product)
             <form method="POST" action="{{ route('itempenjualan.store') }}" class="row g-2 mb-2 align-items-center p-2 rounded-3 border bg-white shadow-sm" style="border-color: #f8efe5 !important;">
                 @csrf
@@ -48,7 +49,7 @@
                 <div class="col-3">
                     <button type="submit" class="btn btn-sm text-white w-100 {{ $sale->status === 'COMPLETED' ? 'disabled' : '' }}" 
                         style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border-radius: 8px; font-weight: 600; font-size: 0.85rem;">
-                        <i class="bi bi-plus-lg"></i> Tambah
+                        Tambah
                     </button>
                 </div>
             </form>
@@ -68,7 +69,7 @@
                     <tr>
                         <th class="py-2">Produk</th>
                         <th class="py-2">Harga</th>
-                        <th class="py-2" style="width: 70px;">Qty</th>
+                        <th class="py-2" style="width: 70px;">Jumlah</th>
                         <th class="py-2">Subtotal</th>
                         <th class="py-2 text-center">Aksi</th>
                     </tr>
@@ -119,13 +120,13 @@
 
                 <select name="payment_method" class="form-select mb-3" style="border-radius: 10px; border-color: #f1e5d7; background-color: #fdfbf7;" required>
                     <option value="">-- Pilih Metode Pembayaran --</option>
-                    <option value="CASH" {{ $sale->metode_pembayaran == 'CASH' ? 'selected' : '' }}>Cash</option>
+                    <option value="CASH" {{ $sale->metode_pembayaran == 'CASH' ? 'selected' : '' }}>Tunai (Cash)</option>
                     <option value="QRIS" {{ $sale->metode_pembayaran == 'QRIS' ? 'selected' : '' }}>QRIS</option>
                 </select>
 
                 <button type="submit" class="btn text-white w-100 py-2 shadow-sm {{ $sale->status == 'COMPLETED' ? 'disabled' : '' }}" 
                     style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 10px; font-weight: 700;">
-                    <i class="bi bi-check-circle-fill me-1"></i> Selesaikan Transaksi (Checkout)
+                    Selesaikan Transaksi (Checkout)
                 </button>
             </form>
 

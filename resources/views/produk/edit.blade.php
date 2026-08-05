@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Produk - POS Millata')
+@section('title', 'Ubah Produk - POS Millata')
 
 @section('content')
 <div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
     <div>
-        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Edit Produk</h1>
+        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Ubah Produk</h1>
         <div class="date-subtitle text-muted fs-6">
-            <i class="bi bi-pencil-square me-1"></i> Perbarui informasi dan data produk
+            Perbarui informasi dan data produk
         </div>
     </div>
     <div>
-        <a href="{{ route('produk.index') }}" class="btn d-flex align-items-center gap-2" style="background: #faf5ee; color: #78350f; border: 1px solid #f1e5d7; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; transition: all 0.2s;">
-            <i class="bi bi-arrow-left"></i> Kembali
+        <a href="{{ route('produk.index') }}" class="btn" style="background: #faf5ee; color: #78350f; border: 1px solid #f1e5d7; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; transition: all 0.2s;">
+            Kembali
         </a>
     </div>
 </div>
@@ -30,7 +30,7 @@
                     <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top" style="border-color: #faf0e6 !important;">
                         <a href="{{ route('produk.index') }}" class="btn btn-secondary px-4 py-2" style="border-radius: 8px; font-weight: 600;">Batal</a>
                         <button type="submit" class="btn text-white px-4 py-2" style="background: linear-gradient(135deg, #78350f 0%, #3a1a05 100%); border-radius: 8px; font-weight: 700; border: none; box-shadow: 0 4px 10px rgba(120, 53, 15, 0.2);">
-                            <i class="bi bi-check-circle-fill me-1"></i> Update Produk
+                            Perbarui Produk
                         </button>
                     </div>
                 </form>

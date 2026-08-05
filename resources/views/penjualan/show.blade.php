@@ -49,7 +49,7 @@
                     <td style="padding: 0.6rem 0;">:</td>
                     <td style="padding: 0.6rem 0; font-size: 0.875rem;">
                         <span class="badge" style="background-color: #fef3c7; color: #b45309; font-weight: 700; padding: 0.35em 0.75em; border-radius: 8px; font-size: 0.75rem;">
-                            {{ $penjualan->status }}
+                            {{ $penjualan->status === 'COMPLETED' ? 'SELESAI' : 'BELUM SELESAI' }}
                         </span>
                     </td>
                 </tr>
@@ -72,10 +72,10 @@
         <table class="table align-middle" style="margin: 0; width: 100%; table-layout: fixed;">
             <thead>
                 <tr style="background-color: #faf5ee;">
-                    <th scope="col" style="width: 8%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">#</th>
+                    <th scope="col" style="width: 8%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">No</th>
                     <th scope="col" style="width: 37%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Produk</th>
                     <th scope="col" style="width: 20%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Harga Satuan</th>
-                    <th scope="col" style="width: 15%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Kuantitas</th>
+                    <th scope="col" style="width: 15%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Jumlah</th>
                     <th scope="col" class="text-end" style="width: 20%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Subtotal</th>
                 </tr>
             </thead>

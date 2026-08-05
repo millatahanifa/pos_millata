@@ -20,7 +20,7 @@
 
     @can('view', App\Models\User::class)
         <div class="section-header fw-bold text-uppercase mb-3" style="font-size: 0.8rem; color: #92400e; letter-spacing: 0.05em;">
-            <i class="bi bi-graph-up-arrow text-warning me-1"></i> Today's Sales
+            <i class="bi bi-graph-up-arrow text-warning me-1"></i> Penjualan Hari Ini
         </div>
         
         <div class="row g-3 mb-4">
@@ -54,7 +54,7 @@
         </div>
 
         <div class="section-header fw-bold text-uppercase mb-3" style="font-size: 0.8rem; color: #92400e; letter-spacing: 0.05em;">
-            <i class="bi bi-wallet2 text-warning me-1"></i> Cash & Payment Status
+            <i class="bi bi-wallet2 text-warning me-1"></i> Status Kas & Pembayaran
         </div>
 
         <div class="row g-3 mb-4">
@@ -89,22 +89,20 @@
     @endcan
 
     <div class="section-header fw-bold text-uppercase mb-3" style="font-size: 0.8rem; color: #92400e; letter-spacing: 0.05em;">
-        <i class="bi bi-exclamation-triangle text-warning me-1"></i> Critical Inventory Status
+        <i class="bi bi-exclamation-triangle text-warning me-1"></i> Status Inventaris Kritis
     </div>
 
     <div class="row g-3 mb-4">
         <div class="col-12 col-lg-6">
             <div class="custom-table-card bg-white border rounded-4 p-3 p-md-4 shadow-sm h-100">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h6 class="fw-bold m-0 text-warning">
-                        <i class="bi bi-box-seam me-1"></i> Stok Rendah
-                    </h6>
+                    <h6 class="fw-bold m-0 text-warning">Stok Rendah</h6>
                 </div>
                 <div class="table-responsive">
                     <table class="table align-middle text-nowrap">
                         <thead class="table-light">
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Nama Produk</th>
                                 <th class="text-end">Sisa Stok</th>
                             </tr>
@@ -138,15 +136,13 @@
         <div class="col-12 col-lg-6">
             <div class="custom-table-card bg-white border rounded-4 p-3 p-md-4 shadow-sm h-100">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h6 class="fw-bold m-0 text-danger">
-                        <i class="bi bi-x-circle me-1"></i> Habis Stok
-                    </h6>
+                    <h6 class="fw-bold m-0 text-danger">Habis Stok</h6>
                 </div>
                 <div class="table-responsive">
                     <table class="table align-middle text-nowrap">
                         <thead class="table-light">
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Nama Produk</th>
                                 <th class="text-end">Status</th>
                             </tr>
@@ -179,7 +175,7 @@
     </div>
 
     <div class="section-header fw-bold text-uppercase mb-3" style="font-size: 0.8rem; color: #92400e; letter-spacing: 0.05em;">
-        <i class="bi bi-star-fill text-warning me-1"></i> Best Seller Products
+        <i class="bi bi-star-fill text-warning me-1"></i> Produk Terlaris
     </div>
 
     <div class="row g-3 mb-4">

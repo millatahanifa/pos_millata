@@ -3,7 +3,7 @@
     @if (!empty($product->foto))
         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
             <label class="form-label fw-bold small text-muted d-block mb-2">
-                <i class="bi bi-image me-1"></i> Foto Produk Saat Ini
+                Foto Produk Saat Ini
             </label>
             <div class="d-inline-block p-1 rounded-4 shadow-sm bg-white" style="border: 1px solid #f1e5d7;">
                 <img src="{{ asset('storage/' . $product->foto) }}"
@@ -15,7 +15,7 @@
 
     <div class="{{ !empty($product->foto) ? 'col-md-6' : 'col-md-12' }}">
         <label class="form-label fw-semibold" style="color: var(--primary-dark); font-size: 0.875rem;">
-            <i class="bi bi-upload me-1 text-warning"></i> Upload / Ganti Foto
+            Unggah / Ganti Foto
         </label>
         <div class="input-group">
             <input type="file"
@@ -30,9 +30,9 @@
             </div>
         @enderror
         
-        {{-- Preview kecil jika foto baru dipilih --}}
+        {{-- Pratinjau kecil jika foto baru dipilih --}}
         <div id="preview-container" class="mt-2" style="display: none;">
-            <span class="small text-muted d-block mb-1">Preview Foto Baru:</span>
+            <span class="small text-muted d-block mb-1">Pratinjau Foto Baru:</span>
             <img id="preview" class="rounded-3 shadow-sm" style="width: 80px; height: 80px; object-fit: cover; border: 1px solid #f1e5d7;">
         </div>
     </div>
@@ -41,7 +41,7 @@
 {{-- Bagian Form Teks ke Bawah Secara Rapi --}}
 <div class="mb-3">
     <label class="form-label fw-semibold" style="color: var(--primary-dark); font-size: 0.875rem;">
-        <i class="bi bi-box-seam me-1 text-warning"></i> Nama Produk
+        Nama Produk
     </label>
     <input type="text" name="nama"
         class="form-control @error('nama') is-invalid @enderror"
@@ -58,7 +58,7 @@
 <div class="row g-3 mb-3">
     <div class="col-md-6">
         <label class="form-label fw-semibold" style="color: var(--primary-dark); font-size: 0.875rem;">
-            <i class="bi bi-tag me-1 text-warning"></i> Harga Beli
+            Harga Beli
         </label>
         <div class="input-group">
             <span class="input-group-text" style="background-color: #faf5ee; border-color: #f1e5d7; border-radius: 12px 0 0 12px; color: var(--primary-dark); font-weight: 600; font-size: 0.85rem;">Rp</span>
@@ -76,7 +76,7 @@
     </div>
     <div class="col-md-6">
         <label class="form-label fw-semibold" style="color: var(--primary-dark); font-size: 0.875rem;">
-            <i class="bi bi-tags me-1 text-warning"></i> Harga Jual
+            Harga Jual
         </label>
         <div class="input-group">
             <span class="input-group-text" style="background-color: #faf5ee; border-color: #f1e5d7; border-radius: 12px 0 0 12px; color: var(--primary-dark); font-weight: 600; font-size: 0.85rem;">Rp</span>
@@ -96,7 +96,7 @@
 
 <div class="mb-3">
     <label class="form-label fw-semibold" style="color: var(--primary-dark); font-size: 0.875rem;">
-        <i class="bi bi-stack me-1 text-warning"></i> Stok Produk
+        Stok Produk
     </label>
     <input type="number" name="stok"
         class="form-control @error('stok') is-invalid @enderror"

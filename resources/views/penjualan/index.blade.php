@@ -12,7 +12,7 @@
     </div>
     <div>
         <a href="{{ route('penjualan.create') }}" class="btn d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2); width: auto;">
-            <i class="bi bi-plus-circle-fill"></i> Create Penjualan
+            <i class="bi bi-plus-circle-fill"></i> Tambah Penjualan
         </a>
     </div>
 </div>
@@ -21,7 +21,7 @@
     @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show rounded-4 mb-4" role="alert">
             <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
         </div>
     @endif
 
@@ -32,11 +32,11 @@
                 name="search"
                 value="{{ request('search') }}"
                 class="form-control border-end-0"
-                placeholder="Search nama kasir..."
+                placeholder="Cari nama kasir..."
                 style="border-radius: 12px 0 0 12px; border-color: #f1e5d7; padding: 0.65rem 1rem;"
             >
             <button class="btn btn-outline-secondary px-4" type="submit" style="border-radius: 0 12px 12px 0; border-color: #f1e5d7; background: #faf5ee; color: #78350f; font-weight: 600;">
-                <i class="bi bi-search me-1"></i> Search
+                <i class="bi bi-search me-1"></i> Cari
             </button>
         </div>
     </form>
@@ -72,9 +72,9 @@
                     </td>
                     <td style="padding: 0.9rem 1rem; font-size: 0.875rem; border-bottom: 1px solid #FAF0E6;">
                         @if($sale->status === 'COMPLETED')
-                            <span class="badge" style="background-color: #d1fae5; color: #065f46; font-weight: 700; padding: 0.35em 0.75em; border-radius: 8px; font-size: 0.75rem;">COMPLETED</span>
+                            <span class="badge" style="background-color: #d1fae5; color: #065f46; font-weight: 700; padding: 0.35em 0.75em; border-radius: 8px; font-size: 0.75rem;">SELESAI</span>
                         @else
-                            <span class="badge" style="background-color: #fef3c7; color: #b45309; font-weight: 700; padding: 0.35em 0.75em; border-radius: 8px; font-size: 0.75rem;">OPEN</span>
+                            <span class="badge" style="background-color: #fef3c7; color: #b45309; font-weight: 700; padding: 0.35em 0.75em; border-radius: 8px; font-size: 0.75rem;">BELUM SELESAI</span>
                         @endif
                     </td>
                     <td class="text-center" style="padding: 0.9rem 1rem; font-size: 0.875rem; border-bottom: 1px solid #FAF0E6;">
@@ -83,7 +83,7 @@
 
                             @can('update', $sale)
                                 @if($sale->status === 'OPEN')
-                                <a href="{{ route('penjualan.edit', $sale) }}" class="btn btn-sm fw-bold text-white px-2" style="border-radius: 8px; background-color: #f59e0b; border: none;">Edit</a>
+                                <a href="{{ route('penjualan.edit', $sale) }}" class="btn btn-sm fw-bold text-white px-2" style="border-radius: 8px; background-color: #f59e0b; border: none;">Ubah</a>
                                 @endif
                             @endcan
 
@@ -113,7 +113,7 @@
 
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mt-4 pt-3 border-top" style="border-color: #f1e5d7 !important;">
         <div class="text-muted" style="font-size: 0.875rem;">
-            Showing <span class="fw-bold text-dark">{{ $sales->firstItem() ?? 0 }}</span> to <span class="fw-bold text-dark">{{ $sales->lastItem() ?? 0 }}</span> of <span class="fw-bold text-dark">{{ $sales->total() }}</span> results
+            Menampilkan <span class="fw-bold text-dark">{{ $sales->firstItem() ?? 0 }}</span> sampai <span class="fw-bold text-dark">{{ $sales->lastItem() ?? 0 }}</span> dari <span class="fw-bold text-dark">{{ $sales->total() }}</span> data
         </div>
         <div class="custom-pagination">
             {{ $sales->appends(request()->query())->onEachSide(1)->links('pagination::simple-bootstrap-4') }}
@@ -124,7 +124,6 @@
 
 @push('styles')
 <style>
-    /* Styling khusus agar pagination minimalis dan rapi */
     .custom-pagination nav {
         display: flex;
         justify-content: center;

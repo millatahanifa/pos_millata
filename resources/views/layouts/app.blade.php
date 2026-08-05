@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'POS Millata')</title>
+    <title>@yield('title', 'Bubu Bakery')</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,6 @@
             padding: 0;
         }
 
-        /* --- NAVBAR ATAS STYLING --- */
         .navbar-custom {
             background: var(--navbar-bg);
             border-bottom: 1px solid var(--card-border);
@@ -44,25 +43,28 @@
             box-shadow: 0 4px 12px rgba(120, 53, 15, 0.02);
         }
 
-        .brand-icon {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(135deg, #5c2406 0%, var(--primary-dark) 100%);
-            color: #fef3c7;
-            border-radius: 9px;
+        .brand-badge {
+            width: 36px;
+            height: 36px;
+            background: #fff7ed;
+            color: var(--brand-warm);
+            border: 1px solid #fed7aa;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1rem;
-            box-shadow: 0 4px 10px rgba(92, 36, 6, 0.2);
+            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.08);
         }
 
-        .brand-text {
-            font-size: 1.05rem;
+        .brand-text-only {
+            font-size: 1.25rem;
             font-weight: 800;
-            color: var(--primary-dark);
+            background: linear-gradient(135deg, #78350f 0%, #3a1a05 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin: 0;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }
 
         .nav-link-custom {
@@ -117,7 +119,6 @@
             width: 100%;
         }
 
-        /* Responsive Breakpoints untuk Desktop/Laptop */
         @media (min-width: 992px) {
             .navbar-custom { padding: 0.6rem 2rem; }
             .main-content { padding: 2rem 2.5rem; }
@@ -133,10 +134,10 @@
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
         <div class="container-fluid px-0">
             <a href="{{ route('dashboard') }}" class="navbar-brand d-flex align-items-center gap-2 m-0 text-decoration-none">
-                <div class="brand-icon">
-                    <i class="bi bi-shop"></i>
+                <div class="brand-badge">
+                    <i class="bi bi-cake2"></i>
                 </div>
-                <h1 class="brand-text">POS Millata</h1>
+                <h1 class="brand-text-only">Bubu Bakery</h1>
             </a>
 
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -147,8 +148,7 @@
                 <ul class="navbar-nav align-lg-items-center gap-1 mx-lg-auto">
                     <li class="nav-item">
                         <a href="{{ route('dashboard') }}" class="nav-link-custom {{ Request::is('dashboard') ? 'active' : '' }}">
-                            <span>Dashboard</span>
-                        </a>
+                            <span>Beranda</span> </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('produk.index') }}" class="nav-link-custom {{ Request::is('produk*') ? 'active' : '' }}">
@@ -164,8 +164,7 @@
                     @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
                     <li class="nav-item">
                         <a href="{{ route('admin.users') }}" class="nav-link-custom {{ Request::is('admin/users*') ? 'active' : '' }}">
-                            <span>Users</span>
-                        </a>
+                            <span>Pengguna</span> </a>
                     </li>
                     @endif
                 </ul>

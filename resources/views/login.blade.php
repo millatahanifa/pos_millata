@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <style>
-    /* Background Soft Vanilla, Cream & Light Peach (Khas Toko Kue & Dessert) */
     body {
         background: radial-gradient(circle at top left, #fff7ed 0%, #fef3c7 40%, #fef2f2 100%) !important;
         font-family: 'Inter', sans-serif;
@@ -19,7 +18,6 @@
         margin: 0;
     }
 
-    /* Kunci Posisi Persis di Tengah Layar dengan Flexbox agar Responsif di HP */
     .centered-login-wrapper {
         min-height: 100vh;
         display: flex;
@@ -28,7 +26,6 @@
         padding: 20px;
     }
 
-    /* Card Utama Warm Bakery Minimalist */
     .bakery-card {
         width: 100%;
         max-width: 400px;
@@ -40,7 +37,6 @@
         border: 1px solid #ffedd5;
     }
 
-    /* Icon Header Warm Chocolate */
     .brand-icon-box {
         width: 58px;
         height: 58px;
@@ -62,7 +58,6 @@
         margin-bottom: 0.375rem;
     }
 
-    /* Input Custom Accent Brown/Warm Amber */
     .input-group-custom {
         position: relative;
     }
@@ -100,7 +95,6 @@
         color: #b45309;
     }
 
-    /* Tombol Masuk Warm Chocolate Gradient */
     .btn-bakery {
         height: 46px;
         background: linear-gradient(135deg, #78350f 0%, #451a03 100%);
@@ -120,7 +114,6 @@
         box-shadow: 0 6px 18px rgba(69, 26, 3, 0.35);
     }
 
-    /* Checkbox Custom Color */
     .form-check-input:checked {
         background-color: #78350f;
         border-color: #78350f;

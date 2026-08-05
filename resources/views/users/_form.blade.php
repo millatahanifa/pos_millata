@@ -27,7 +27,7 @@
         placeholder="{{ isset($user->id) ? 'Masukkan password baru' : 'Masukkan password' }}">
     @if(isset($user->id))
         <small class="text-muted d-block mt-1" style="font-size: 0.825rem;">
-            <i class="bi bi-info-circle me-1"></i>Kosongkan jika tidak ingin mengubah password.
+            Kosongkan jika tidak ingin mengubah password.
         </small>
     @endif
     @error('password')
@@ -57,7 +57,6 @@
         Batal
     </a>
     <button type="submit" class="btn text-white rounded-pill px-4 fw-bold shadow-sm" style="background-color: #3d1c02; border: none;">
-        <i class="bi bi-save me-1"></i> 
         @if(isset($user->id))
             Simpan Perubahan
         @else

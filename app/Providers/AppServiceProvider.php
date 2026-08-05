@@ -13,6 +13,7 @@ use App\Policies\ProdukPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,6 +42,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Mendaftarkan Carbon ke bahasa Indonesia agar format tanggal dashboard otomatis berbahasa Indonesia
+        Carbon::setLocale('id');
+
         // Mendaftarkan Policies (jika pakai fitur Gate/Policy bawaan)
         foreach ($this->policies as $key => $value) {
             Gate::policy($key, $value);
