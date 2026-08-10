@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - POS Millata')
+@section('title', 'Dashboard - Bubu Bakery')
 
 @section('content')
 <div class="container-fluid px-0">
@@ -14,7 +14,7 @@
         </div>
         <div class="user-badge bg-white border rounded-pill px-3 py-2 shadow-sm d-flex align-items-center gap-2">
             <i class="bi bi-person-circle text-warning fs-5"></i>
-            <span class="fw-bold small" style="color: var(--primary-dark);">{{ ucfirst(Auth::user()->role->name ?? 'User') }} POS Millata</span>
+            <span class="fw-bold small" style="color: var(--primary-dark);">{{ ucfirst(Auth::user()->role->name ?? 'User') }} Bubu Bakery</span>
         </div>
     </div>
 

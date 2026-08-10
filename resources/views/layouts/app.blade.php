@@ -150,6 +150,14 @@
                         <a href="{{ route('dashboard') }}" class="nav-link-custom {{ Request::is('dashboard') ? 'active' : '' }}">
                             <span>Beranda</span> </a>
                     </li>
+
+                    @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.users') }}" class="nav-link-custom {{ Request::is('admin/users*') ? 'active' : '' }}">
+                            <span>Pengguna</span> </a>
+                    </li>
+                    @endif
+
                     <li class="nav-item">
                         <a href="{{ route('produk.index') }}" class="nav-link-custom {{ Request::is('produk*') ? 'active' : '' }}">
                             <span>Produk</span>
@@ -160,13 +168,6 @@
                             <span>Penjualan</span>
                         </a>
                     </li>
-
-                    @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
-                    <li class="nav-item">
-                        <a href="{{ route('admin.users') }}" class="nav-link-custom {{ Request::is('admin/users*') ? 'active' : '' }}">
-                            <span>Pengguna</span> </a>
-                    </li>
-                    @endif
                 </ul>
 
                 <div class="d-flex align-items-center mt-2 mt-lg-0">

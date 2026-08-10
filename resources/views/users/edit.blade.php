@@ -20,7 +20,7 @@
 <div class="container-fluid px-0 d-flex flex-column justify-content-center" style="min-height: calc(100vh - 180px);">
     <div class="row justify-content-center w-100 m-0">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <div class="custom-card p-4">
+            <div class="custom-card p-4" style="background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1e5d7;">
                 @if(session('success'))
                     <div class="alert alert-success alert-dismissible fade show mb-4" role="alert" style="background-color: #d1e7dd; color: #0f5132; border-color: #badbcc; border-radius: 10px;">
                         <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}

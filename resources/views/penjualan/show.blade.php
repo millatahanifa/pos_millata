@@ -84,7 +84,16 @@
                 <tr>
                     <td class="fw-bold text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">{{ $loop->iteration }}</td>
                     <td class="fw-semibold text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;" title="{{ $item->produk?->nama ?? 'Produk Dihapus' }}">
-                        {{ $item->produk?->nama ?? 'Produk Dihapus' }}
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="rounded-3 overflow-hidden d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: #f7efe7; border: 1px solid #f1e5d7; flex-shrink: 0;">
+                                @if(!empty($item->produk?->foto))
+                                    <img src="{{ asset('storage/' . $item->produk->foto) }}" alt="{{ $item->produk->nama ?? 'Produk' }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                @else
+                                    <span class="text-muted" style="font-size: 0.65rem;">Foto</span>
+                                @endif
+                            </div>
+                            <span>{{ $item->produk?->nama ?? 'Produk Dihapus' }}</span>
+                        </div>
                     </td>
                     <td class="text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">
                         Rp {{ number_format($item->harga_satuan, 0, ',', '.') }}

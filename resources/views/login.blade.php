@@ -12,10 +12,27 @@
 
 <style>
     body {
-        background: radial-gradient(circle at top left, #fff7ed 0%, #fef3c7 40%, #fef2f2 100%) !important;
+        background-color: var(--bg-body) !important;
+        background-image: radial-gradient(circle at top left, rgba(255,243,224,0.95) 0%, rgba(254,215,170,0.6) 35%, rgba(248,250,252,0.6) 100%);
+        background-blend-mode: overlay;
         font-family: 'Inter', sans-serif;
         min-height: 100vh;
         margin: 0;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: -12%;
+        left: -8%;
+        width: 64vw;
+        height: 64vh;
+        background: radial-gradient(circle at center, rgba(255,235,214,0.9), rgba(255,255,255,0));
+        filter: blur(56px);
+        pointer-events: none;
+        z-index: 0;
     }
 
     .centered-login-wrapper {
@@ -24,17 +41,21 @@
         align-items: center;
         justify-content: center;
         padding: 20px;
+        position: relative;
+        z-index: 1;
     }
 
     .bakery-card {
         width: 100%;
-        max-width: 400px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 24px;
-        box-shadow: 0 20px 40px -15px rgba(180, 83, 9, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
-        padding: 2.5rem 2rem;
-        border: 1px solid #ffedd5;
+        max-width: 420px;
+        background: var(--navbar-bg);
+        backdrop-filter: blur(6px) saturate(110%);
+        border-radius: 20px;
+        box-shadow: var(--card-shadow);
+        padding: 2.2rem 2rem;
+        border: 1px solid var(--card-border);
+        position: relative;
+        z-index: 2;
     }
 
     .brand-icon-box {
@@ -48,13 +69,13 @@
         justify-content: center;
         font-size: 1.6rem;
         margin-bottom: 1.25rem;
-        box-shadow: 0 8px 18px rgba(120, 53, 15, 0.2);
+        box-shadow: 0 8px 18px rgba(120, 53, 15, 0.12);
     }
 
     .form-label-custom {
         font-size: 0.875rem;
         font-weight: 600;
-        color: #78350f;
+        color: var(--primary-accent);
         margin-bottom: 0.375rem;
     }
 
@@ -67,7 +88,7 @@
         left: 14px;
         top: 50%;
         transform: translateY(-50%);
-        color: #d97706;
+        color: var(--brand-warm);
         font-size: 1.1rem;
         z-index: 5;
         transition: color 0.2s ease;
@@ -80,7 +101,7 @@
         background-color: #fff8f1;
         padding-left: 44px !important;
         font-size: 0.938rem;
-        color: #451a03;
+        color: var(--primary-dark);
         transition: all 0.2s ease;
     }
 
@@ -132,7 +153,13 @@
             <p class="small mb-0" style="color: #92400e;">Masuk ke akun kasir / admin toko.</p>
         </div>
 
-        <form action="{{ route('auth') }}" method="POST">
+        @if ($errors->has('credentials'))
+            <div class="alert alert-danger py-2 px-3 mb-4" role="alert" style="border-radius: 14px; font-size: 0.95rem;">
+                {{ $errors->first('credentials') }}
+            </div>
+        @endif
+
+        <form action="{{ route('auth') }}" method="POST" novalidate>
             @csrf
 
             <div class="mb-3">
