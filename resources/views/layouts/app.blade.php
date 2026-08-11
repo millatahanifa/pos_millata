@@ -119,6 +119,37 @@
             width: 100%;
         }
 
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+            padding: 0.75rem 1rem;
+        }
+
+        .swal2-popup {
+            width: 290px !important;
+            padding: 1rem !important;
+            font-size: 0.85rem !important;
+            border-radius: 1rem !important;
+        }
+        .swal2-title {
+            font-size: 1.1rem !important;
+        }
+        .swal2-html-container {
+            font-size: 0.85rem !important;
+        }
+        .swal2-actions {
+            margin: 0.75rem 0 0 0 !important;
+        }
+        .swal2-styled {
+            padding: 0.35rem 1rem !important;
+            font-size: 0.85rem !important;
+        }
+
         @media (min-width: 992px) {
             .navbar-custom { padding: 0.6rem 2rem; }
             .main-content { padding: 2rem 2.5rem; }
@@ -147,25 +178,34 @@
             <div class="collapse navbar-collapse justify-content-between mt-3 mt-lg-0" id="navbarNav">
                 <ul class="navbar-nav align-lg-items-center gap-1 mx-lg-auto">
                     <li class="nav-item">
+                        <a href="{{ route('about') }}" class="nav-link-custom {{ Request::is('about*') ? 'active' : '' }}">
+                            Tentang Aplikasi
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{ route('dashboard') }}" class="nav-link-custom {{ Request::is('dashboard') ? 'active' : '' }}">
-                            <span>Beranda</span> </a>
+                            Beranda
+                        </a>
                     </li>
 
                     @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
                     <li class="nav-item">
                         <a href="{{ route('admin.users') }}" class="nav-link-custom {{ Request::is('admin/users*') ? 'active' : '' }}">
-                            <span>Pengguna</span> </a>
+                            Pengguna
+                        </a>
                     </li>
                     @endif
 
                     <li class="nav-item">
                         <a href="{{ route('produk.index') }}" class="nav-link-custom {{ Request::is('produk*') ? 'active' : '' }}">
-                            <span>Produk</span>
+                            Produk
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a href="{{ route('penjualan.index') }}" class="nav-link-custom {{ Request::is('penjualan*') ? 'active' : '' }}">
-                            <span>Penjualan</span>
+                            Penjualan
                         </a>
                     </li>
                 </ul>
@@ -174,7 +214,7 @@
                     <form action="{{ route('logout') }}" method="POST" class="w-100 m-0">
                         @csrf
                         <button type="submit" class="btn btn-logout">
-                            <span>Keluar</span>
+                            Keluar
                         </button>
                     </form>
                 </div>

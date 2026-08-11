@@ -20,66 +20,60 @@
 
     @can('view', App\Models\User::class)
         <div class="section-header fw-bold text-uppercase mb-3" style="font-size: 0.8rem; color: #92400e; letter-spacing: 0.05em;">
-            <i class="bi bi-graph-up-arrow text-warning me-1"></i> Penjualan Hari Ini
+            <i class="bi bi-graph-up-arrow text-warning me-1"></i> Penjualan Hari Ini & Pembayaran
         </div>
         
         <div class="row g-3 mb-4">
-            <div class="col-12 col-md-6">
-                <div class="stat-card bg-white border rounded-4 p-3 p-md-4 shadow-sm">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stat-card bg-white border rounded-4 p-3 p-md-4 shadow-sm h-100">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
-                            <div class="stat-label text-muted small fw-semibold mb-1">Total Penjualan Hari Ini</div>
-                            <h3 class="stat-value fw-bold m-0 fs-4" style="color: var(--primary-dark);">Rp {{ number_format($ringkasan['total_penjualan']) }}</h3>
+                            <div class="stat-label text-muted small fw-semibold mb-1">Total Penjualan</div>
+                            <h3 class="stat-value fw-bold m-0 fs-5" style="color: var(--primary-dark);">Rp {{ number_format($ringkasan['total_penjualan']) }}</h3>
                         </div>
-                        <div class="stat-icon-wrapper p-3 rounded-3 fs-4" style="background-color: #fef3c7; color: #b45309;">
+                        <div class="stat-icon-wrapper p-2 rounded-3 fs-5" style="background-color: #fef3c7; color: #b45309;">
                             <i class="bi bi-cash-stack"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6">
-                <div class="stat-card bg-white border rounded-4 p-3 p-md-4 shadow-sm">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stat-card bg-white border rounded-4 p-3 p-md-4 shadow-sm h-100">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <div class="stat-label text-muted small fw-semibold mb-1">Jumlah Transaksi</div>
-                            <h3 class="stat-value fw-bold m-0 fs-4" style="color: var(--primary-dark);">{{ number_format($ringkasan['total_transaksi']) }} Transaksi</h3>
+                            <h3 class="stat-value fw-bold m-0 fs-5" style="color: var(--primary-dark);">{{ number_format($ringkasan['total_transaksi']) }}</h3>
                         </div>
-                        <div class="stat-icon-wrapper p-3 rounded-3 fs-4" style="background-color: #ffe4e6; color: #e11d48;">
+                        <div class="stat-icon-wrapper p-2 rounded-3 fs-5" style="background-color: #ffe4e6; color: #e11d48;">
                             <i class="bi bi-receipt"></i>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="section-header fw-bold text-uppercase mb-3" style="font-size: 0.8rem; color: #92400e; letter-spacing: 0.05em;">
-            <i class="bi bi-wallet2 text-warning me-1"></i> Status Kas & Pembayaran
-        </div>
-
-        <div class="row g-3 mb-4">
-            <div class="col-12 col-md-6">
-                <div class="stat-card bg-white border rounded-4 p-3 p-md-4 shadow-sm">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stat-card bg-white border rounded-4 p-3 p-md-4 shadow-sm h-100">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
-                            <div class="stat-label text-muted small fw-semibold mb-1">Pembayaran Tunai</div>
-                            <h3 class="stat-value fw-bold m-0 fs-4" style="color: var(--primary-dark);">Rp {{ number_format($ringkasan['total_cash']) }}</h3>
+                            <div class="stat-label text-muted small fw-semibold mb-1">Tunai</div>
+                            <h3 class="stat-value fw-bold m-0 fs-5" style="color: var(--primary-dark);">Rp {{ number_format($ringkasan['total_cash']) }}</h3>
                         </div>
-                        <div class="stat-icon-wrapper p-3 rounded-3 fs-4" style="background-color: #dcfce7; color: #15803d;">
+                        <div class="stat-icon-wrapper p-2 rounded-3 fs-5" style="background-color: #dcfce7; color: #15803d;">
                             <i class="bi bi-currency-dollar"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6">
-                <div class="stat-card bg-white border rounded-4 p-3 p-md-4 shadow-sm">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stat-card bg-white border rounded-4 p-3 p-md-4 shadow-sm h-100">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
-                            <div class="stat-label text-muted small fw-semibold mb-1">Pembayaran Non-Tunai</div>
-                            <h3 class="stat-value fw-bold m-0 fs-4" style="color: var(--primary-dark);">Rp {{ number_format($ringkasan['total_non_tunai']) }}</h3>
+                            <div class="stat-label text-muted small fw-semibold mb-1">Non-Tunai</div>
+                            <h3 class="stat-value fw-bold m-0 fs-5" style="color: var(--primary-dark);">Rp {{ number_format($ringkasan['total_non_tunai']) }}</h3>
                         </div>
-                        <div class="stat-icon-wrapper p-3 rounded-3 fs-4" style="background-color: #e0f2fe; color: #0369a1;">
+                        <div class="stat-icon-wrapper p-2 rounded-3 fs-5" style="background-color: #e0f2fe; color: #0369a1;">
                             <i class="bi bi-qr-code-scan"></i>
                         </div>
                     </div>
@@ -200,7 +194,7 @@
                                     <span class="badge bg-success">{{ $produk->stok }} Pcs</span>
                                 </td>
                                 <td class="text-end fw-bold text-secondary">
-                                    <br class="d-none"> {{ number_format($produk->total_terjual) }} Pcs
+                                    {{ number_format($produk->total_terjual) }} Pcs
                                 </td>
                             </tr>
                             @empty

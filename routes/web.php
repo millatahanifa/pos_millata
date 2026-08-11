@@ -19,6 +19,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+    Route::get('/about', function () {
+        return view('about');
+    })->name('about');
+
     Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
@@ -26,8 +30,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{user}', [UserController::class, 'edit'])->name('users.edit');
         Route::put('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/users/destroy/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-    });
 
+        // ---> RUTE REKAP PAKAI REKAPCONTROLLER <---
+        Route::get('/penjualan/rekap', [\App\Http\Controllers\RekapController::class, 'index'])->name('penjualan.rekap');
+    });
+    
     Route::middleware('role:admin,kasir')->group(function () {
         Route::resource('/produk', ProdukController::class);
         

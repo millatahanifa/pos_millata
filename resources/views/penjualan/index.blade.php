@@ -10,7 +10,11 @@
             <i class="bi bi-receipt me-1"></i> Riwayat dan data transaksi penjualan
         </div>
     </div>
-    <div>
+    <div class="d-flex align-items-center gap-2">
+        <a href="{{ route('admin.penjualan.rekap') }}" class="btn d-inline-flex align-items-center gap-2 text-white fw-bold shadow-sm" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%); border: none; border-radius: 10px; padding: 0.5rem 1rem;">
+            <i class="bi bi-calendar-check-fill"></i> Rekap Bulanan
+        </a>
+
         <a href="{{ route('penjualan.create') }}" class="btn d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2); width: auto;">
             <i class="bi bi-plus-circle-fill"></i> Tambah Penjualan
         </a>
