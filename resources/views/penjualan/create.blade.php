@@ -3,18 +3,16 @@
 @section('title', 'Buat Transaksi Baru - POS Millata')
 
 @section('content')
-<div class="top-header mb-4 pb-3 border-bottom">
+<div class="top-header d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
     <div>
         <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Tambah Penjualan</h1>
-        <div class="date-subtitle text-muted fs-6">Buat transaksi penjualan baru</div>
+        <div class="date-subtitle text-muted fs-6">
+            <i class="bi bi-plus-circle me-1"></i> Buat transaksi penjualan baru
+        </div>
     </div>
 </div>
 
-<div class="container-fluid px-0">
-    <div class="custom-card p-3 p-md-4" style="background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f1e5d7;">
-        @include('penjualan._form')
-    </div>
-</div>
+@include('penjualan._form')
 @endsection
 
 @push('scripts')

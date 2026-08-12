@@ -3,17 +3,20 @@
 @section('title', 'Penjualan - POS Millata')
 
 @section('content')
-<div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+<div class="top-header d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
     <div>
         <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Halaman Penjualan</h1>
         <div class="date-subtitle text-muted fs-6">
             <i class="bi bi-receipt me-1"></i> Riwayat dan data transaksi penjualan
         </div>
     </div>
-    <div class="d-flex align-items-center gap-2">
-        <a href="{{ route('admin.penjualan.rekap') }}" class="btn d-inline-flex align-items-center gap-2 text-white fw-bold shadow-sm" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%); border: none; border-radius: 10px; padding: 0.5rem 1rem;">
+    <div class="d-flex flex-wrap align-items-center gap-2">
+        {{-- TOMBOL INI HANYA AKAN MUNCUL JIKA YANG LOGIN ADALAH ADMIN --}}
+        @if(auth()->check() && auth()->user()->role === 'admin')
+        <a href="{{ route('admin.penjualan.rekap') }}" class="btn d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; box-shadow: 0 4px 10px rgba(180, 83, 9, 0.2); width: auto;">
             <i class="bi bi-calendar-check-fill"></i> Rekap Bulanan
         </a>
+        @endif
 
         <a href="{{ route('penjualan.create') }}" class="btn d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2); width: auto;">
             <i class="bi bi-plus-circle-fill"></i> Tambah Penjualan
@@ -21,7 +24,7 @@
     </div>
 </div>
 
-<div class="custom-card">
+<div class="custom-card p-3 p-md-4 bg-white rounded-4 shadow-sm" style="border: 1px solid #f1e5d7;">
     @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show rounded-4 mb-4" role="alert">
             <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ session('error') }}
@@ -46,48 +49,48 @@
     </form>
 
     <div class="table-responsive">
-        <table class="table align-middle" style="margin: 0; width: 100%; table-layout: fixed;">
+        <table class="table align-middle" style="margin: 0; width: 100%;">
             <thead>
                 <tr style="background-color: #faf5ee;">
-                    <th scope="col" style="width: 6%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">No</th>
-                    <th scope="col" style="width: 20%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Tanggal Transaksi</th>
-                    <th scope="col" style="width: 16%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Kasir</th>
-                    <th scope="col" style="width: 17%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Total Pembayaran</th>
-                    <th scope="col" style="width: 14%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Metode</th>
-                    <th scope="col" style="width: 11%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Status</th>
-                    <th scope="col" class="text-center" style="width: 16%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Aksi</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">No</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Tanggal Transaksi</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Kasir</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Total Pembayaran</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Metode</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Status</th>
+                    <th scope="col" class="text-center" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($sales as $sale)
                 <tr>
-                    <td class="fw-bold text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">{{ $sales->firstItem() + $loop->index }}</td>
-                    <td class="text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">
+                    <td class="fw-bold" style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">{{ $sales->firstItem() + $loop->index }}</td>
+                    <td style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         {{ $sale->created_at ? $sale->created_at->translatedFormat('d-m-Y H:i') : '-' }}
                     </td>
-                    <td class="text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;" title="{{ $sale->user?->name ?? 'Kasir Tidak Ditemukan' }}">
+                    <td style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;" title="{{ $sale->user?->name ?? 'Kasir Tidak Ditemukan' }}">
                         {{ $sale->user?->name ?? 'Kasir Tidak Ditemukan' }}
                     </td>
-                    <td class="fw-semibold text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">
+                    <td class="fw-semibold" style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         Rp {{ number_format($sale->total_pembayaran, 0, ',', '.') }}
                     </td>
-                    <td class="text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">
+                    <td style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         {{ $sale->metode_pembayaran }}
                     </td>
-                    <td style="padding: 0.9rem 1rem; font-size: 0.875rem; border-bottom: 1px solid #FAF0E6;">
+                    <td style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         @if($sale->status === 'COMPLETED')
                             <span class="badge" style="background-color: #d1fae5; color: #065f46; font-weight: 700; padding: 0.35em 0.75em; border-radius: 8px; font-size: 0.75rem;">SELESAI</span>
                         @else
                             <span class="badge" style="background-color: #fef3c7; color: #b45309; font-weight: 700; padding: 0.35em 0.75em; border-radius: 8px; font-size: 0.75rem;">BELUM SELESAI</span>
                         @endif
                     </td>
-                    <td class="text-center" style="padding: 0.9rem 1rem; font-size: 0.875rem; border-bottom: 1px solid #FAF0E6;">
+                    <td class="text-center" style="padding: 0.85rem 0.75rem; font-size: 0.85rem; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         <div class="d-flex justify-content-center gap-1">
-                            <a href="{{ route('penjualan.show', $sale) }}" class="btn btn-sm fw-bold text-white px-2" style="border-radius: 8px; background-color: #0ea5e9; border: none;">Detail</a>
+                            <a href="{{ route('penjualan.show', $sale) }}" class="btn btn-sm fw-bold text-white px-2 py-1" style="border-radius: 6px; background-color: #0ea5e9; border: none; font-size: 0.775rem;">Detail</a>
 
                             @can('update', $sale)
                                 @if($sale->status === 'OPEN')
-                                <a href="{{ route('penjualan.edit', $sale) }}" class="btn btn-sm fw-bold text-white px-2" style="border-radius: 8px; background-color: #f59e0b; border: none;">Ubah</a>
+                                <a href="{{ route('penjualan.edit', $sale) }}" class="btn btn-sm fw-bold text-white px-2 py-1" style="border-radius: 6px; background-color: #f59e0b; border: none; font-size: 0.775rem;">Ubah</a>
                                 @endif
                             @endcan
 
@@ -95,7 +98,7 @@
                             <form id="delete-form-{{ $sale->id }}" action="{{ route('penjualan.destroy', $sale->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-sm fw-bold px-2 text-white" style="border-radius: 8px; background-color: #e11d48; border: none;" onclick="confirmDelete({{ $sale->id }})">
+                                <button type="button" class="btn btn-sm fw-bold px-2 py-1 text-white" style="border-radius: 6px; background-color: #e11d48; border: none; font-size: 0.775rem;" onclick="confirmDelete({{ $sale->id }})">
                                     Hapus
                                 </button>
                             </form>

@@ -178,12 +178,6 @@
             <div class="collapse navbar-collapse justify-content-between mt-3 mt-lg-0" id="navbarNav">
                 <ul class="navbar-nav align-lg-items-center gap-1 mx-lg-auto">
                     <li class="nav-item">
-                        <a href="{{ route('about') }}" class="nav-link-custom {{ Request::is('about*') ? 'active' : '' }}">
-                            Tentang Aplikasi
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
                         <a href="{{ route('dashboard') }}" class="nav-link-custom {{ Request::is('dashboard') ? 'active' : '' }}">
                             Beranda
                         </a>
@@ -204,8 +198,22 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('penjualan.index') }}" class="nav-link-custom {{ Request::is('penjualan*') ? 'active' : '' }}">
+                        <a href="{{ route('penjualan.index') }}" class="nav-link-custom {{ Request::is('penjualan*') && !Request::is('admin/penjualan/rekap*') ? 'active' : '' }}">
                             Penjualan
+                        </a>
+                    </li>
+
+                    @if(auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role?->name === 'admin'))
+                    <li class="nav-item">
+                        <a href="{{ route('admin.penjualan.rekap') }}" class="nav-link-custom {{ Request::is('admin/penjualan/rekap*') ? 'active' : '' }}">
+                            Rekap Bulanan
+                        </a>
+                    </li>
+                    @endif
+
+                    <li class="nav-item">
+                        <a href="{{ route('about') }}" class="nav-link-custom {{ Request::is('about*') ? 'active' : '' }}">
+                            Tentang Aplikasi
                         </a>
                     </li>
                 </ul>

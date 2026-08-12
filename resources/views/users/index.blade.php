@@ -3,7 +3,7 @@
 @section('title', 'Users - POS Millata')
 
 @section('content')
-<div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+<div class="top-header d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
     <div>
         <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Halaman Users</h1>
         <div class="date-subtitle text-muted fs-6">
@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="custom-card">
+<div class="custom-card p-3 p-md-4 bg-white rounded-4 shadow-sm" style="border: 1px solid #f1e5d7;">
     <form action="{{ route('admin.users') }}" method="GET" class="mb-4">
         <div class="input-group">
             <input
@@ -35,28 +35,28 @@
     </form>
 
     <div class="table-responsive">
-        <table class="table align-middle" style="margin: 0;">
+        <table class="table align-middle mb-0" style="width: 100%;">
             <thead>
                 <tr style="background-color: #faf5ee;">
-                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">No</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7; width: 60px; white-space: nowrap;">No</th>
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Nama</th>
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Email</th>
-                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Role</th>
-                    <th scope="col" class="text-end" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Aksi</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Role</th>
+                    <th scope="col" class="text-end" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($users as $user)
                 <tr>
-                    <td class="fw-bold" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">{{ $users->firstItem() + $loop->index }}</td>
-                    <td class="fw-semibold" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">{{ $user->name }}</td>
-                    <td style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">{{ $user->email }}</td>
-                    <td style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">
+                    <td class="fw-bold" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">{{ $users->firstItem() + $loop->index }}</td>
+                    <td class="fw-semibold text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">{{ $user->name }}</td>
+                    <td class="text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">{{ $user->email }}</td>
+                    <td style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         <span style="background-color: #fef3c7; color: #b45309; font-weight: 700; padding: 0.35em 0.75em; border-radius: 8px; font-size: 0.75rem;">
                             {{ $user->role->name ?? '-' }}
                         </span>
                     </td>
-                    <td class="text-end" style="padding: 0.9rem 1rem; font-size: 0.875rem; border-bottom: 1px solid #FAF0E6;">
+                    <td class="text-end" style="padding: 0.9rem 1rem; font-size: 0.875rem; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-sm fw-bold text-white px-3 me-1" style="border-radius: 8px; background-color: #f59e0b; border: none;">
                             Edit Akun
                         </a>
@@ -72,7 +72,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center text-muted py-4">
+                    <td colspan="5" class="text-center text-muted py-5">
                         <i class="bi bi-folder-x fs-3 d-block mb-2"></i>
                         Data user tidak ditemukan.
                     </td>

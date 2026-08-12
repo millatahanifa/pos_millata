@@ -144,12 +144,12 @@
 <div class="centered-login-wrapper">
     <div class="bakery-card animate__animated animate__fadeInDown">
         
-        <div class="brand-icon-box">
+        <div class="brand-icon-box mx-auto">
             <i class="bi bi-shop"></i>
         </div>
 
-        <div class="mb-4">
-            <h4 class="fw-bold mb-1" style="color: #451a03; letter-spacing: -0.02em;">LOGIN POS</h4>
+        <div class="mb-4 text-center">
+            <h4 class="fw-bold mb-1" style="color: #451a03; letter-spacing: -0.02em;">Bubu Bakery</h4>
             <p class="small mb-0" style="color: #92400e;">Masuk ke akun kasir / admin toko.</p>
         </div>
 

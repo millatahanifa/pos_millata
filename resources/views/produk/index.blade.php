@@ -3,7 +3,7 @@
 @section('title', 'Produk - POS Millata')
 
 @section('content')
-<div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+<div class="top-header d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
     <div>
         <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Halaman Produk</h1>
         <div class="date-subtitle text-muted fs-6">
@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div class="custom-card">
+<div class="custom-card p-3 p-md-4 bg-white rounded-4 shadow-sm" style="border: 1px solid #f1e5d7;">
     @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show rounded-4 mb-4" role="alert">
             <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ session('error') }}
@@ -44,54 +44,54 @@
     </form>
 
     <div class="table-responsive">
-        <table class="table align-middle" style="margin: 0; width: 100%; table-layout: fixed;">
+        <table class="table align-middle" style="margin: 0; width: 100%;">
             <thead>
                 <tr style="background-color: #faf5ee;">
-                    <th scope="col" style="width: 5%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">No</th>
-                    <th scope="col" style="width: 11%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Pengguna</th>
-                    <th scope="col" style="width: 10%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Foto</th>
-                    <th scope="col" style="width: 17%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Nama</th>
-                    <th scope="col" style="width: 15%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Harga Beli</th>
-                    <th scope="col" style="width: 15%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Harga Jual</th>
-                    <th scope="col" style="width: 9%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Stok</th>
-                    <th scope="col" class="text-end" style="width: 18%; color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 1rem; border-bottom: 1px solid #f1e5d7;">Aksi</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">No</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Pengguna</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Foto</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Nama Produk</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Harga Beli</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Harga Jual</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Stok</th>
+                    <th scope="col" class="text-end" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($products as $product)
                 <tr>
-                    <td class="fw-bold text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">{{ $products->firstItem() + $loop->index }}</td>
-                    <td class="text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;" title="{{ $product->user->name ?? '-' }}">{{ $product->user->name ?? '-' }}</td>
-                    <td style="padding: 0.9rem 1rem; font-size: 0.875rem; border-bottom: 1px solid #FAF0E6;">
+                    <td class="fw-bold" style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">{{ $products->firstItem() + $loop->index }}</td>
+                    <td style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">{{ $product->user->name ?? '-' }}</td>
+                    <td style="padding: 0.85rem 0.75rem; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         @if($product->foto)
-                            <img src="{{ asset('storage/'.$product->foto) }}" class="img-thumbnail rounded-3" style="width: 50px; height: 50px; object-fit: cover;">
+                            <img src="{{ asset('storage/'.$product->foto) }}" class="rounded-3 shadow-sm" style="width: 42px; height: 42px; object-fit: cover; border: 1px solid #fed7aa;">
                         @else
                             <span class="text-muted small">Tidak ada foto</span>
                         @endif
                     </td>
-                    <td class="fw-semibold text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;" title="{{ $product->nama }}">{{ $product->nama }}</td>
-                    <td class="text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">Rp {{ number_format($product->harga_beli, 0, ',', '.') }}</td>
-                    <td class="text-truncate" style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">Rp {{ number_format($product->harga_jual, 0, ',', '.') }}</td>
-                    <td style="padding: 0.9rem 1rem; font-size: 0.875rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6;">
+                    <td class="fw-semibold" style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; min-width: 140px;">{{ $product->nama }}</td>
+                    <td style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">Rp {{ number_format($product->harga_beli, 0, ',', '.') }}</td>
+                    <td style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">Rp {{ number_format($product->harga_jual, 0, ',', '.') }}</td>
+                    <td style="padding: 0.85rem 0.75rem; font-size: 0.85rem; color: #3a1a05; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         <span class="badge" style="background-color: #fef3c7; color: #b45309; font-weight: 700; padding: 0.35em 0.75em; border-radius: 8px; font-size: 0.75rem;">
                             {{ $product->stok }}
                         </span>
                     </td>
-                    <td class="text-end" style="padding: 0.9rem 1rem; font-size: 0.875rem; border-bottom: 1px solid #FAF0E6;">
+                    <td class="text-end" style="padding: 0.85rem 0.75rem; font-size: 0.85rem; border-bottom: 1px solid #FAF0E6; white-space: nowrap;">
                         <div class="d-flex justify-content-end gap-1">
                             @can('view', $product)
-                            <a href="{{ route('produk.show', $product) }}" class="btn btn-sm fw-bold text-white px-2" style="border-radius: 8px; background-color: #0ea5e9; border: none;">Detail</a>
+                            <a href="{{ route('produk.show', $product) }}" class="btn btn-sm fw-bold text-white px-2 py-1" style="border-radius: 6px; background-color: #0ea5e9; border: none; font-size: 0.775rem;">Detail</a>
                             @endcan
 
                             @can('update', $product)
-                            <a href="{{ route('produk.edit', $product) }}" class="btn btn-sm fw-bold text-white px-2" style="border-radius: 8px; background-color: #f59e0b; border: none;">Ubah</a>
+                            <a href="{{ route('produk.edit', $product) }}" class="btn btn-sm fw-bold text-white px-2 py-1" style="border-radius: 6px; background-color: #f59e0b; border: none; font-size: 0.775rem;">Ubah</a>
                             @endcan
 
                             @can('delete', $product)
                             <form id="delete-form-{{ $product->id }}" action="{{ route('produk.destroy', $product->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-sm fw-bold px-2 text-white" style="border-radius: 8px; background-color: #e11d48; border: none;" onclick="confirmDelete({{ $product->id }}, '{{ $product->nama }}')">
+                                <button type="button" class="btn btn-sm fw-bold px-2 py-1 text-white" style="border-radius: 6px; background-color: #e11d48; border: none; font-size: 0.775rem;" onclick="confirmDelete({{ $product->id }}, '{{ $product->nama }}')">
                                     Hapus
                                 </button>
                             </form>
