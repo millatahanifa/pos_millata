@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Rekap Bulanan Penjualan - POS Millata')
+@section('title', 'Rekap Bulanan Penjualan - Bubu Bakery')
 
 @section('content')
 <div class="top-header d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
@@ -9,11 +9,6 @@
         <div class="date-subtitle text-muted fs-6">
             <i class="bi bi-file-earmark-bar-graph-fill me-1"></i> Analisis omzet bulanan dan tren transaksi harian toko
         </div>
-    </div>
-    <div class="d-flex align-items-center gap-2">
-        <a href="{{ route('penjualan.index') }}" class="btn d-inline-flex align-items-center gap-2 text-white fw-bold shadow-sm" style="background: linear-gradient(135deg, #78350f 0%, #451a03 100%); border: none; border-radius: 10px; padding: 0.5rem 1rem;">
-            <i class="bi bi-arrow-left"></i> <span>Kembali</span>
-        </a>
     </div>
 </div>
 

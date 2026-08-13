@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Detail Produk - POS Millata')
+@section('title', 'Detail Produk - Bubu Bakery')
 
 @section('content')
 <div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
