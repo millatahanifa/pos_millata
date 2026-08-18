@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login POS')
+@section('title', 'Login Bubu Bakery')
 
 @section('content')
 

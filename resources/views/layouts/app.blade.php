@@ -130,6 +130,7 @@
             padding: 0.75rem 1rem;
         }
 
+        /* Styling kustom agar pop-up SweetAlert2 mungil & estetik */
         .swal2-popup {
             width: 290px !important;
             padding: 1rem !important;
@@ -219,9 +220,9 @@
                 </ul>
 
                 <div class="d-flex align-items-center mt-2 mt-lg-0">
-                    <form action="{{ route('logout') }}" method="POST" class="w-100 m-0">
+                    <form action="{{ route('logout') }}" method="POST" class="w-100 m-0" id="logoutForm">
                         @csrf
-                        <button type="submit" class="btn btn-logout">
+                        <button type="button" class="btn btn-logout" onclick="confirmLogout()">
                             Keluar
                         </button>
                     </form>
@@ -236,6 +237,33 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function confirmLogout() {
+        Swal.fire({
+            title: 'Yakin mau keluar?',
+            showCancelButton: true,
+            confirmButtonColor: '#e11d48',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, Keluar',
+            cancelButtonText: 'Batal',
+            width: '320px',
+            padding: '0.85rem 1rem',
+            customClass: {
+                popup: 'rounded-4 shadow-sm',
+                title: 'fs-6 fw-bold mb-2',
+                actions: 'mt-2 mb-0',
+                confirmButton: 'rounded-pill px-3 py-1 fs-7 m-1',
+                cancelButton: 'rounded-pill px-3 py-1 fs-7 m-1'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logoutForm').submit();
+            }
+        });
+    }
+</script>
+
 @stack('scripts')
 </body>
 </html>
