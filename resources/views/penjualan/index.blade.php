@@ -19,7 +19,7 @@
         @endif
 
         <a href="{{ route('penjualan.create') }}" class="btn d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2); width: auto;">
-            <i class="bi bi-plus-circle-fill"></i> Tambah Penjualan
+            <i class="bi bi-plus-circle-fill"></i> Tambah Transaksi Baru
         </a>
     </div>
 </div>

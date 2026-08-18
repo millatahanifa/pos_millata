@@ -12,7 +12,7 @@
     </div>
     <div>
         <a href="{{ route('admin.users.create') }}" class="btn d-inline-flex align-items-center gap-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2); width: auto;">
-            <i class="bi bi-plus-circle-fill"></i> Create User
+            <i class="bi bi-plus-circle-fill"></i> Tambah Pengguna
         </a>
     </div>
 </div>
@@ -29,7 +29,7 @@
                 style="border-radius: 12px 0 0 12px; border-color: #f1e5d7; padding: 0.65rem 1rem;"
             >
             <button class="btn btn-outline-secondary px-4" type="submit" style="border-radius: 0 12px 12px 0; border-color: #f1e5d7; background: #faf5ee; color: #78350f; font-weight: 600;">
-                <i class="bi bi-search me-1"></i> Search
+                <i class="bi bi-search me-1"></i> Cari
             </button>
         </div>
     </form>

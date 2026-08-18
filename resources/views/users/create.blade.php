@@ -5,7 +5,7 @@
 @section('content')
 <div class="top-header d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
     <div>
-        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Tambah User</h1>
+        <h1 class="page-title fw-bold mb-1" style="color: var(--primary-dark, #3a1a05); font-size: 1.65rem;">Tambah Pengguna</h1>
         <div class="date-subtitle text-muted fs-6">
             <i class="bi bi-person-plus me-1"></i> Tambahkan pengguna baru ke dalam sistem
         </div>

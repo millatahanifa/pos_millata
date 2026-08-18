@@ -213,7 +213,7 @@
 
                     <li class="nav-item">
                         <a href="{{ route('about') }}" class="nav-link-custom {{ Request::is('about*') ? 'active' : '' }}">
-                            Tentang Aplikasi
+                            Tentang
                         </a>
                     </li>
                 </ul>

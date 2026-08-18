@@ -10,11 +10,6 @@
             <i class="bi bi-file-earmark-bar-graph-fill me-1"></i> Analisis omzet bulanan dan tren transaksi harian toko
         </div>
     </div>
-    <div class="d-flex align-items-center gap-2">
-        <a href="{{ route('penjualan.index') }}" class="btn d-inline-flex align-items-center gap-2 text-white fw-bold shadow-sm" style="background: linear-gradient(135deg, #78350f 0%, #451a03 100%); border: none; border-radius: 10px; padding: 0.5rem 1rem;">
-            <i class="bi bi-arrow-left"></i> <span>Kembali</span>
-        </a>
-    </div>
 </div>
 
 <div class="row g-3 mb-3">
