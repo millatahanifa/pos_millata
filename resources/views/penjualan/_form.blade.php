@@ -6,6 +6,7 @@
 @endif
 
 <div class="row g-4">
+    {{-- Kolom Daftar Produk --}}
     <div class="col-lg-6">
         <div class="custom-card p-3 p-md-4" style="height: 78vh; display: flex; flex-direction: column; background: #fffaf5; border: 1px solid #f1e5d7; border-radius: 14px; box-shadow: 0 6px 18px rgba(58, 26, 5, 0.04);">
             <h5 class="fw-bold mb-3" style="color: var(--primary-dark, #3a1a05);">Daftar Produk</h5>
@@ -63,6 +64,7 @@
         </div>
     </div>
 
+    {{-- Kolom Keranjang Belanja --}}
     <div class="col-lg-6">
         <div class="custom-card p-3 p-md-4" style="height: 78vh; display: flex; flex-direction: column; background: #fffaf5; border: 1px solid #f1e5d7; border-radius: 14px; box-shadow: 0 6px 18px rgba(58, 26, 5, 0.04);">
             <h5 class="fw-bold mb-3" style="color: var(--primary-dark, #3a1a05);">Keranjang Belanja</h5>

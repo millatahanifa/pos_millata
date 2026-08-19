@@ -10,11 +10,6 @@
             <i class="bi bi-info-circle me-1"></i> Informasi lengkap detail produk dan stok
         </div>
     </div>
-    <div>
-        <a href="{{ route('produk.index') }}" class="btn d-flex align-items-center gap-2" style="background: #faf5ee; color: #78350f; border: 1px solid #f1e5d7; font-weight: 700; border-radius: 10px; padding: 0.5rem 1rem; transition: all 0.2s;">
-            <i class="bi bi-arrow-left"></i> Kembali
-        </a>
-    </div>
 </div>
 
 <div class="d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 200px);">

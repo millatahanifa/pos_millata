@@ -93,7 +93,6 @@ class ProdukController extends Controller
             'stok'       => $dataReq['stok'] ?? $produk->stok,
         ];
 
-        // Jika upload foto baru
         if ($request->hasFile('foto')) {
             if (
                 $produk->foto &&
@@ -122,7 +121,6 @@ class ProdukController extends Controller
             return redirect()->route('produk.index')->with('success', 'Product deleted successfully.');
             
         } catch (\Illuminate\Database\QueryException $e) {
-            // Menangkap error foreign key constraint (SQLSTATE 23000)
             if ($e->getCode() == "23000") {
                 return redirect()->route('produk.index')->with('error', 'Produk tidak dapat dihapus karena sudah pernah digunakan dalam transaksi penjualan!');
             }

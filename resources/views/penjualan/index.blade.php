@@ -54,7 +54,7 @@
                 <tr style="background-color: #faf5ee;">
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">No</th>
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Tanggal Transaksi</th>
-                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Kasir</th>
+                    <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Kasir/User</th>
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Total Pembayaran</th>
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Metode</th>
                     <th scope="col" style="color: #78350f; font-size: 0.775rem; font-weight: 800; text-transform: uppercase; padding: 0.8rem 0.75rem; border-bottom: 1px solid #f1e5d7; white-space: nowrap;">Status</th>

@@ -68,7 +68,14 @@ class PenjualanController extends Controller
 
     public function edit($id)
     {
-        return redirect()->route('penjualan.pos', $id);
+        $sale = Penjualan::with('itemPenjualan.produk')->findOrFail($id);
+        
+        $search = request('search');
+        $products = Produk::when($search, function($query, $search) {
+            return $query->where('nama', 'like', "%{$search}%");
+        })->get();
+
+        return view('penjualan.edit', compact('sale', 'products'));
     }
 
     public function update(Request $request, Penjualan $penjualan)
